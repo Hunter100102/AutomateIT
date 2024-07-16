@@ -1,2 +1,2 @@
 # AutomationIT
-I am looking to start a company and I want to build a nice professional looking background. 
+I am looking to start a company and I want to begin building a nice professional looking website. 
