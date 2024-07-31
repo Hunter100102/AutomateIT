@@ -43,6 +43,7 @@
             padding: 35px 20px;
             text-align: center;
             color: #000; /* Black text color */
+            position: relative; /* Add position relative to the hero section */
         }
 
         .hero h1 {
@@ -52,6 +53,19 @@
 
         .hero p {
             font-size: 1.5rem;
+        }
+
+        .hero .logo {
+            position: absolute; /* Position the logo */
+            top: 50%; /* Vertically center the logo */
+            right: 20px; /* Position the logo 20px from the right */
+            transform: translateY(-50%); /* Adjust the vertical centering */
+        }
+
+        .hero .logo img {
+            height: 150px; /* Adjust the height as needed */
+            /* Optionally set the width to maintain aspect ratio */
+            /* width: auto; */
         }
 
         .cta {
@@ -99,12 +113,14 @@
     <section class="hero">
         <h1>Welcome to AutomateIT</h1>
         <p>Custom Automation Solutions for Your Business</p>
-        <!--<a href="services.html" class="cta">Learn More</a>-->
+        <div class="logo">
+            <img src="images/logo.png" alt="AutomateIT Logo">
+        </div>
     </section>
-    <section class="highlights">
+    <!--<section class="highlights">
         <h2>Our Services</h2>
         <p>Explore the range of services we offer to help your business grow.</p>
-    </section>
+    </section>-->
     <footer>
         <p>&copy; 2024 AutomateIT. All rights reserved.</p>
     </footer>
