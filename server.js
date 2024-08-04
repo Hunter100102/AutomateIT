@@ -19,8 +19,8 @@ app.post('/send-email', (req, res) => {
     const { name, email, message } = req.body;
 
     const msg = {
-        to: 'spc.cody.hunter@gmail.com', // Your email address
-        from: 'spc.cody.hunter@gmail.com', // Your verified sender email address
+        to: 'william@automatingsolutions.com', // Your email address
+        from: email, // Your verified sender email address
         subject: 'New Contact Form Submission',
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
     };
