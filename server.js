@@ -20,7 +20,7 @@ app.post('/send-email', (req, res) => {
 
     const msg = {
         to: 'william@automatingsolutions.com', // Your email address
-        from: email, // Your verified sender email address
+        from: spc.cody.hunter@gmail.com, // Your verified sender email address
         subject: 'New Contact Form Submission',
         text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
     };

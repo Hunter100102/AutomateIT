@@ -155,6 +155,8 @@
             if (response.ok) {
                 statusMessage.innerText = 'Email sent successfully!';
                 statusMessage.style.color = 'green';
+
+                window.location.href = 'recieved.html'
             } else {
                 statusMessage.innerText = 'Failed to send email.';
                 statusMessage.style.color = 'red';
