@@ -6,51 +6,120 @@
     <title>Services | AutomateIT</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Additional Styles for Services Page */
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #f0f0f0;
+            color: #333;
+        }
+
+        header {
+            background: #000;
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: #00aaff;
+        }
+
         .services {
             text-align: center;
             padding: 60px 20px;
+            max-width: 1200px;
+            margin: 0 auto;
         }
 
         .services h1 {
             font-size: 2.5rem;
+            color: #00aaff;
             margin-bottom: 40px;
         }
 
-        .service {
-            margin-bottom: 60px;
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        }
+
+        .service-card img {
+            width: 100%;
+            height: auto;
+            border-bottom: 2px solid #00aaff;
+        }
+
+        .service-card h2 {
+            font-size: 1.8rem;
+            color: #333;
+            margin: 20px 0 10px;
             padding: 0 20px;
         }
 
-        .service img {
-            max-width: 100%;
-            border-radius: 10px;
-            margin-bottom: 20px;
-        }
-
-        .service h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
-        }
-
-        .service p {
-            font-size: 1.1rem;
+        .service-card p {
+            font-size: 1rem;
             line-height: 1.6;
-            text-align: left;
+            padding: 0 20px 20px;
+            color: #555;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 40px;
         }
 
         /* Responsive Design for Smaller Screens */
         @media (max-width: 768px) {
-            .service {
-                margin-bottom: 40px;
-            }
-
-            .service h2 {
+            .service-card h2 {
                 font-size: 1.5rem;
             }
 
-            .service p {
-                font-size: 1rem;
+            .service-card p {
+                font-size: 0.95rem;
             }
         }
     </style>
@@ -71,19 +140,21 @@
     <section class="services">
         <h1>Our Services</h1>
 
-        <div class="service">
-            <img src="images/process-automation.jpg" alt="Process Automation">
-            <h2>Process Automation</h2>
-            <p>Optimize your operations with our versatile process automation solutions. From integrating with systems like QuickBase to handling complex tasks such as generating line items, POs, and invoices, we offer tailored automation that fits your specific needs. Our capabilities extend beyond these examples, providing custom solutions that streamline various aspects of your business and enhance overall efficiency.</p>
-        </div>
+        <div class="services-grid">
+            <div class="service-card">
+                <img src="images/process-automation.jpg" alt="Process Automation">
+                <h2>Process Automation</h2>
+                <p>Optimize your operations with our versatile process automation solutions. From integrating with systems like QuickBase to handling complex tasks such as generating line items, POs, and invoices, we offer tailored automation that fits your specific needs.</p>
+            </div>
 
-        <div class="service">
-            <img src="images/custom-websites.jpg" alt="Custom Websites">
-            <h2>Custom Websites</h2>
-            <p>Elevate your digital presence with a website designed just for you. Whether you need a simple, elegant site or a comprehensive platform like a custom CRM, our web development services are tailored to meet your unique requirements. We focus on creating responsive, user-friendly designs that are aligned with your business goals, offering flexibility to scale as your needs evolve.</p>
-        </div>
+            <div class="service-card">
+                <img src="images/custom-websites.jpg" alt="Custom Websites">
+                <h2>Custom Websites</h2>
+                <p>Elevate your digital presence with a website designed just for you. Whether you need a simple, elegant site or a comprehensive platform like a custom CRM, our web development services are tailored to meet your unique requirements.</p>
+            </div>
 
-        <!-- Add more services as needed -->
+            <!-- Add more service cards as needed -->
+        </div>
 
     </section>
     <footer>

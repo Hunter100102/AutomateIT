@@ -7,83 +7,88 @@
     <style>
         /* General Styles */
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
             box-sizing: border-box;
             background: url('images/homepage background.jpg') no-repeat center center/cover;
-            color: #000; /* Black text color */
+            color: #333; /* Dark grey text color */
         }
 
         header {
-            background: #000; /* Black background */
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
             color: #fff; /* White text color */
             padding: 1rem 0;
             text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
         }
 
         nav ul {
             list-style: none;
             padding: 0;
             margin: 0;
+            display: flex;
+            justify-content: center;
         }
 
         nav ul li {
-            display: inline;
-            margin: 0 10px;
+            margin: 0 15px;
         }
 
         nav ul li a {
             color: #fff; /* White text color */
             text-decoration: none;
             font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: #00aaff; /* Light blue background on hover */
         }
 
         .hero {
-            background: rgba(255, 255, 255, 0.75); /* Semi-transparent white background */
-            padding: 35px 20px;
+            background: rgba(255, 255, 255, 0.75); /* Semi-transparent white background with glassmorphism effect */
+            padding: 50px 20px;
             text-align: center;
-            color: #000; /* Black text color */
-            position: relative; /* Add position relative to the hero section */
+            color: #333; /* Dark grey text color */
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            max-width: 900px;
+            margin: 50px auto; /* Center the hero section */
         }
 
         .hero h1 {
-            font-size: 2.5rem;
+            font-size: 3rem;
             margin: 0;
         }
 
         .hero p {
             font-size: 1.2rem;
-        }
-
-        .hero .logo {
-            position: absolute; /* Position the logo */
-            top: 50%; /* Vertically center the logo */
-            right: 20px; /* Position the logo 20px from the right */
-            transform: translateY(-50%); /* Adjust the vertical centering */
-        }
-
-        .hero .logo img {
-            height: 150px; /* Adjust the height as needed */
-            width: auto; /* Maintain aspect ratio */
+            margin: 20px 0;
         }
 
         .cta {
             background: #00aaff;
             color: #fff;
-            padding: 10px 20px;
+            padding: 15px 30px;
             text-decoration: none;
             border-radius: 5px;
-            margin-top: 20px;
+            margin-top: 30px;
             display: inline-block;
+            font-size: 1rem;
+            transition: background 0.3s ease;
         }
 
-        section {
-            padding: 60px 20px;
+        .cta:hover {
+            background: #0088cc; /* Darker blue on hover */
         }
 
         footer {
-            background: #000; /* Black background */
+            background: rgba(0, 0, 0, 0.8); /* Semi-transparent black background */
             color: #fff; /* White text color */
             text-align: center;
             padding: 1rem 0;
@@ -92,52 +97,32 @@
             width: 100%;
         }
 
-        h1, h2 {
-            color: #000; /* Black text color */
-        }
-
         /* Responsive Styles */
         @media (max-width: 768px) {
             .hero h1 {
-                font-size: 2rem;
+                font-size: 2.5rem;
             }
 
             .hero p {
                 font-size: 1rem;
             }
 
-            .hero .logo {
-                position: static;
-                transform: none;
-                margin-top: 20px;
-            }
-
-            .hero .logo img {
-                height: 80px;
+            nav ul {
+                flex-direction: column;
             }
 
             nav ul li {
-                display: block;
                 margin: 10px 0;
-            }
-
-            footer {
-                position: static;
-                margin-top: 20px;
             }
         }
 
         @media (max-width: 480px) {
             .hero h1 {
-                font-size: 1.5rem;
+                font-size: 2rem;
             }
 
             .hero p {
                 font-size: 0.9rem;
-            }
-
-            .hero .logo img {
-                height: 60px;
             }
         }
     </style>
@@ -157,9 +142,7 @@
     <section class="hero">
         <h1>Welcome to AutomateIT</h1>
         <p>Custom Automation Solutions for Your Business</p>
-        <div class="logo">
-            <img src="images/logo.png" alt="AutomateIT Logo">
-        </div>
+        <a href="contact.html" class="cta">Free Consultation</a>
     </section>
     <footer>
         <p>&copy; 2024 AutomateIT. All rights reserved.</p>

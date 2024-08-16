@@ -6,20 +6,177 @@
     <title>About Us | AutomateIT</title>
     <link rel="stylesheet" href="styles.css">
     <style>
-        /* Additional Inline Styles for About Us Page */
-        .about {
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: #f0f0f0; /* Light grey background */
+            color: #333; /* Dark grey text color */
+        }
+
+        header {
+            background: #000; /* Solid black background */
+            color: #fff; /* White text color */
+            padding: 1rem 0;
             text-align: center;
-            padding: 60px 20px;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
         }
 
-        .about img {
-            max-width: 15%; /* Adjusted size: half of the original size */
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: #00aaff; /* Light blue background on hover */
+        }
+
+        .hero {
+            background: url('images/hero_background.jpg') no-repeat center center/cover;
+            color: #00aaff; /* Light blue text color for hero section */
+            padding: 80px 20px;
+            text-align: center;
+            box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.5);
+        }
+
+        .hero h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+        }
+/* change h1 and p to change the About us part */
+        .hero p {
+            font-size: 1.5rem;
+            margin-bottom: 30px;
+            text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        }
+
+        .content {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            padding: 40px 20px;
+            background: #fff;
+        }
+
+        .content-section {
+            flex: 1;
+            min-width: 300px;
+            max-width: 600px;
+            margin: 20px;
+            padding: 20px;
+            background: #f9f9f9;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .content-section h2 {
+            font-weight: 600;
+            margin-bottom: 20px;
+            color: #00aaff; /* Light blue text color */
+        }
+
+        .content-section p {
+            font-size: 1.1rem;
+            margin-bottom: 20px;
+            line-height: 1.6;
+        }
+
+        .founder {
+            text-align: center;
+            padding: 40px 20px;
+            background: #f0f0f0;
+        }
+
+        .founder img {
+            max-width: 150px;
             border-radius: 50%;
-            margin-top: 20px;
+            margin-bottom: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
         }
 
-        .founder h3, .founder h4 {
-            font-weight: normal; /* Remove boldness */
+        .founder h3 {
+            font-size: 1.5rem;
+            color: #333;
+            margin-bottom: 10px;
+        }
+
+        .founder h4 {
+            font-size: 1.2rem;
+            color: #555;
+            font-weight: normal;
+        }
+
+        footer {
+            background: #000;
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            margin-top: 40px;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            .hero h1 {
+                font-size: 2.5rem;
+            }
+
+            .hero p {
+                font-size: 1.2rem;
+            }
+
+            .content-section {
+                margin: 10px;
+                padding: 15px;
+            }
+
+            .founder img {
+                max-width: 120px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .hero h1 {
+                font-size: 2rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            .content-section {
+                margin: 5px;
+                padding: 10px;
+            }
+
+            .founder img {
+                max-width: 100px;
+            }
+        }
+
+        .content-section h1 {
+            color: #00aaff; /* Light blue text color for About Us */
         }
     </style>
 </head>
@@ -36,24 +193,25 @@
             </ul>
         </nav>
     </header>
-    <section class="about">
+    <section class="hero">
         <h1>About Us</h1>
-        <p>AutomateIT was founded in 2024 by Cody Hunter with a vision to revolutionize business operations through innovative automation solutions. With a background in software engineering and a passion for efficiency, Cody embarked on this journey to streamline business processes and enhance productivity.</p>
-        
-        <h2>Our Mission</h2>
-        <p>At AutomateIT, our mission is to provide tailored automation solutions that empower businesses to achieve operational excellence all while reducing the labor force. We leverage cutting-edge technologies and industry best practices to deliver efficient, scalable, and reliable automation tools.</p>
-        
-        <h2>Our Team</h2>
-        <p>Meet the dedicated professionals behind AutomateIT, driven by a shared commitment to innovation and client success.</p>
-        
-        <div class="founder">
-            <img src="images/cody.jpg" alt="Owner and Founder" title="Owner and Founder, Cody Hunter">
-            <div class="founder-details">
-                <h3>Owner and Founder</h3>
-                <h4>William Hunter</h4>
-            </div>
+        <p>Empowering businesses with automation solutions</p>
+    </section>
+    <section class="content">
+        <div class="content-section">
+            <h2>Our Mission</h2>
+            <p>At AutomateIT, our mission is to provide tailored automation solutions that empower businesses to achieve operational excellence while reducing the labor force. We leverage cutting-edge technologies and industry best practices to deliver efficient, scalable, and reliable automation tools.</p>
+        </div>
+        <div class="content-section">
+            <h2>Our Team</h2>
+            <p>Meet the dedicated professionals behind AutomateIT, driven by a shared commitment to innovation and client success. Our team combines deep industry knowledge with a passion for technology, enabling us to create customized solutions for our clients.</p>
         </div>
     </section>
+    <!--<section class="founder">
+        <img src="images/cody.jpg" alt="Owner and Founder" title="Owner and Founder, Cody Hunter">
+        <h3>William Hunter</h3>
+        <h4>Owner and Founder</h4>
+    </section>-->
     <footer>
         <p>&copy; 2024 AutomateIT. All rights reserved.</p>
     </footer>
