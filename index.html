@@ -11,7 +11,9 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            background: url('images/homepage background.jpg') no-repeat center center/cover;
+            background: url('images/homepage background-2.jpg') no-repeat center center;
+            background-size: cover; /* Ensure the background covers the entire screen */
+            min-height: 100vh; /* Ensure the body takes at least the full height of the viewport */
             color: #333; /* Dark grey text color */
         }
 
@@ -58,7 +60,7 @@
             border-radius: 15px;
             box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
             max-width: 900px;
-            margin: 50px auto; /* Center the hero section */
+            margin: 100px auto; /* Center the hero section and add space above */
         }
 
         .hero h1 {
