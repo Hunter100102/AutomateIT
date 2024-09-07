@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Learn More | Kinetic Techs</title>
+    <style>
+        /* General Styles */
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            background: url('images/learn-more-background.jpg') no-repeat center center;
+            background-size: cover;
+            min-height: 100vh;
+            color: #333;
+        }
+
+        header {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            padding: 1rem 0;
+            text-align: center;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        nav ul {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+        }
+
+        nav ul li {
+            margin: 0 15px;
+        }
+
+        nav ul li a {
+            color: #fff;
+            text-decoration: none;
+            font-weight: bold;
+            padding: 10px 15px;
+            border-radius: 5px;
+            transition: background 0.3s ease;
+        }
+
+        nav ul li a:hover {
+            background: #00aaff;
+        }
+
+        .content-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 50px;
+            background: rgba(255, 255, 255, 0.75);
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+            margin: 50px auto;
+            max-width: 900px;
+        }
+
+        h1 {
+            font-size: 3rem;
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        p {
+            font-size: 1.2rem;
+            line-height: 1.6;
+            margin: 15px 0;
+            color: #333;
+        }
+
+        ul {
+            list-style-type: none;
+            padding: 0;
+            margin: 20px 0;
+            text-align: left;
+        }
+
+        ul li {
+            font-size: 1.2rem;
+            margin: 10px 0;
+        }
+
+        ul li strong {
+            color: #00aaff;
+        }
+
+        .cta {
+            background: #00aaff;
+            color: #fff;
+            padding: 15px 30px;
+            text-decoration: none;
+            border-radius: 5px;
+            margin-top: 30px;
+            display: inline-block;
+            font-size: 1.2rem;
+            transition: background 0.3s ease;
+        }
+
+        .cta:hover {
+            background: #0088cc;
+        }
+
+        footer {
+            background: rgba(0, 0, 0, 0.8);
+            color: #fff;
+            text-align: center;
+            padding: 1rem 0;
+            position: fixed;
+            bottom: 0;
+            width: 100%;
+        }
+
+        /* Responsive Styles */
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2.5rem;
+            }
+
+            p {
+                font-size: 1rem;
+            }
+
+            ul li {
+                font-size: 1rem;
+            }
+
+            .content-container {
+                padding: 20px;
+                margin: 20px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 2rem;
+            }
+
+            p {
+                font-size: 0.9rem;
+            }
+
+            ul li {
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <nav>
+            <ul>
+                <li><a href="index.html">Home</a></li>
+                <li><a href="about.html">About Us</a></li>
+                <li><a href="services.html">Services</a></li>
+                <li><a href="blog.html">Blog</a></li>
+                <li><a href="contact.html">Contact Us</a></li>
+                <li><a href="kinetic-techs.html">Kinetic Techs</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="content-container">
+        <h1>Learn More About Our Services</h1>
+        <p>At Kinetic Techs, we offer a wide range of IT and low voltage services to keep your business running smoothly. Our fully equipped vans and expert technicians are ready to assist you with any technology challenge. Below are some of the key services we offer:</p>
+        
+        <ul>
+            <li><strong>Network Refreshes</strong> - Get the latest technology to optimize your network’s performance and reliability.</li>
+            <li><strong>Structured Cabling</strong> - Professional installation of CAT 5e, CAT 6e, and fiber optic cables for seamless connectivity.</li>
+            <li><strong>Data and Voice Cabling</strong> - Installations for new constructions and upgrades for existing structures.</li>
+            <li><strong>Network Design and Consultation</strong> - Customized network solutions to fit your specific needs.</li>
+            <li><strong>Security Camera Installation</strong> - Advanced CCTV systems for effective monitoring and security.</li>
+            <li><strong>Wi-Fi Optimization</strong> - Ensure strong, consistent wireless coverage across your business.</li>
+            <li><strong>Audio/Visual Integration</strong> - Installation of AV equipment to enhance your presentations and meetings.</li>
+            <li><strong>System Troubleshooting and Maintenance</strong> - On-call support to resolve issues quickly and efficiently.</li>
+        </ul>
+
+        <p>If you have any questions about our services or want to learn how we can assist you with your specific needs, don’t hesitate to <a href="contact.html">contact us</a> for more details or to schedule a consultation.</p>
+
+        <a href="contact.html" class="cta">Contact Us Today</a>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Kinetic Techs. All rights reserved.</p>
+    </footer>
+</body>
+</html>
