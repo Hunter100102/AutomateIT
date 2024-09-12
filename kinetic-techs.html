@@ -15,6 +15,7 @@
             background-size: cover;
             min-height: 100vh;
             color: #333;
+            padding-bottom: 100px; /* Added padding to the bottom */
         }
 
         header {
@@ -57,9 +58,10 @@
             justify-content: center;
             padding: 20px;
             flex-wrap: wrap;
+            padding-bottom: 100px; /* Added bottom padding to the container */
         }
 
-        .hero {
+        .hero, .kinetic-techs-banner {
             background: rgba(255, 255, 255, 0.75);
             padding: 20px;
             border-radius: 15px;
@@ -85,7 +87,7 @@
         }
 
         .cta {
-            background: #00aaff; 
+            background: #00aaff;
             color: #fff;
             padding: 15px 30px;
             text-decoration: none;
@@ -100,16 +102,6 @@
             background: #0088cc;
         }
 
-        .kinetic-techs-banner {
-            background: rgba(255, 255, 255, 0.75);
-            padding: 20px;
-            border-radius: 15px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-            width: 45%;
-            margin: 10px;
-            text-align: center;
-        }
-
         .kinetic-techs-banner h2 {
             color: #333;
             font-size: 2.5rem;
@@ -121,15 +113,14 @@
             margin: 20px 0;
         }
 
-        .kinetic-techs-banner a {
-            color: #ffffff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: text-decoration 0.3s ease;
+        .kinetic-techs-banner ul {
+            list-style-type: none;
+            padding: 0;
+            text-align: left;
         }
 
-        .kinetic-techs-banner a:hover {
-            text-decoration: underline;
+        .kinetic-techs-banner ul li {
+            margin-bottom: 10px;
         }
 
         footer {
@@ -163,6 +154,10 @@
 
             .kinetic-techs-banner p {
                 font-size: 1rem;
+            }
+
+            .kinetic-techs-banner ul {
+                padding-left: 20px;
             }
 
             nav ul {
@@ -215,7 +210,7 @@
         </section>
         <section class="kinetic-techs-banner">
             <h2>Why Choose Us?</h2>
-            <p>Our stocked vans and comprehensive service offerings ensure that we meet all your low voltage installation needs efficiently. Here’s a brief overview of what we offer:</p>
+            <p>Our stocked vans and comprehensive service offerings ensure that we meet all your low voltage installation needs efficiently. Here’s a brief overview of what we offer:</p>          
             <ul>
                 <li><strong>Network Refreshes</strong> - Upgrades for better performance and reliability.</li>
                 <li><strong>Structured Cabling</strong> - Professional installation of CAT 5e, CAT 6e, and fiber optic cables.</li>
