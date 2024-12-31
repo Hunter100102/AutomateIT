@@ -3,6 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="AutomateIT offers custom automation solutions for businesses, helping streamline operations with innovative technology.">
+    <meta name="keywords" content="automation solutions, business automation, custom software, streamline operations">
+    <meta property="og:title" content="Home | AutomateIT">
+    <meta property="og:description" content="Custom Automation Solutions for Your Business">
+    <meta property="og:image" content="images/homepage background-2.jpg">
+    <meta property="og:url" content="https://www.automateit.com">
+    <meta property="og:type" content="website">
+    <meta name="twitter:card" content="summary_large_image">
+    <link rel="icon" type="image/png" href="images/favicon.png">
     <title>Home | AutomateIT</title>
     <style>
         /* General Styles */
@@ -68,6 +77,11 @@
             margin: 0;
         }
 
+        .hero h1 sub {
+            font-size: 0.6em;
+            vertical-align: sub;
+        }
+
         .hero p {
             font-size: 1.2rem;
             margin: 20px 0;
@@ -87,37 +101,6 @@
 
         .cta:hover {
             background: #0088cc; 
-        }
-
-        .kinetic-techs-banner {
-            background: rgba(255, 255, 255, 0.75);
-            padding: 40px 20px;
-            text-align: center;
-            border-radius: 10px;
-            margin: 40px auto;
-            max-width: 900px;
-        }
-
-        .kinetic-techs-banner h2 {
-            color: #333;
-            font-size: 2.5rem;
-            margin: 0;
-        }
-
-        .kinetic-techs-banner p {
-            font-size: 1.2rem;
-            margin: 20px 0;
-        }
-
-        .kinetic-techs-banner a {
-            color: #007bff;
-            text-decoration: none;
-            font-weight: bold;
-            transition: text-decoration 0.3s ease;
-        }
-
-        .kinetic-techs-banner a:hover {
-            text-decoration: underline;
         }
 
         footer {
@@ -140,14 +123,6 @@
                 font-size: 1rem;
             }
 
-            .kinetic-techs-banner h2 {
-                font-size: 2rem;
-            }
-
-            .kinetic-techs-banner p {
-                font-size: 1rem;
-            }
-
             nav ul {
                 flex-direction: column;
             }
@@ -163,14 +138,6 @@
             }
 
             .hero p {
-                font-size: 0.9rem;
-            }
-
-            .kinetic-techs-banner h2 {
-                font-size: 1.5rem;
-            }
-
-            .kinetic-techs-banner p {
                 font-size: 0.9rem;
             }
         }
@@ -189,17 +156,32 @@
             </ul>
         </nav>
     </header>
-    <section class="hero">
-        <h1>Welcome to AutomateIT</h1>
-        <p>Custom Automation Solutions for Your Business</p>
-        <a href="contact.html" class="cta">Free Consultation</a>
-    </section>
-    <!--<section class="kinetic-techs-banner">
-        <h2>Introducing Kinetic Techs</h2>
-        <p>Techs in Motion. <a href="kinetic-techs.html">Click to Learn More</a></p>
-    </section>-->
+    <main>
+        <section class="hero">
+            <h1>Welcome to AutomateIT<sub>LLC</sub></h1>
+            <p>Custom Automation Solutions for Your Business</p>
+            <a href="contact.html" class="cta">Free Consultation</a>
+        </section>
+        <!--<section class="kinetic-techs-banner">
+            <h2>Introducing Kinetic Techs</h2>
+            <p>Techs in Motion. <a href="kinetic-techs.html">Click to Learn More</a></p>
+        </section>-->
+    </main>
     <footer>
         <p>&copy; 2024 AutomateIT. All rights reserved.</p>
     </footer>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "Organization",
+        "name": "AutomateIT",
+        "url": "https://www.automateit.com",
+        "logo": "https://www.automateit.com/images/logo.png",
+        "sameAs": [
+            "https://facebook.com/automateit",
+            "https://instagram.com/automateit"
+        ]
+    }
+    </script>
 </body>
 </html>
