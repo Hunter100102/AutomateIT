@@ -1,173 +1,220 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Services | AutomateIT</title>
-    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="styles.css" />
     <style>
-        /* General Styles */
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-            background: #f0f0f0;
-            color: #333;
-        }
+      /* General Styles */
+      body {
+        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+        margin: 0;
+        padding: 0;
+        box-sizing: border-box;
+        background: #f0f0f0;
+        color: #333;
+      }
 
-        header {
-            background: rgba(0, 0, 0, 0.8);
-            color: #fff;
-            padding: 1rem 0;
-            text-align: center;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-        }
+      header {
+        background: rgba(0, 0, 0, 0.8);
+        color: #fff;
+        padding: 1rem 0;
+        text-align: center;
+        position: sticky;
+        top: 0;
+        z-index: 1000;
+        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+      }
 
-        nav ul {
-            list-style: none;
-            padding: 0;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-        }
+      nav ul {
+        list-style: none;
+        padding: 0;
+        margin: 0;
+        display: flex;
+        justify-content: center;
+      }
 
-        nav ul li {
-            margin: 0 15px;
-        }
+      nav ul li {
+        margin: 0 15px;
+      }
 
-        nav ul li a {
-            color: #fff;
-            text-decoration: none;
-            font-weight: bold;
-            padding: 10px 15px;
-            border-radius: 5px;
-            transition: background 0.3s ease;
-        }
+      nav ul li a {
+        color: #fff;
+        text-decoration: none;
+        font-weight: bold;
+        padding: 10px 15px;
+        border-radius: 5px;
+        transition: background 0.3s ease;
+      }
 
-        nav ul li a:hover {
-            background: #00aaff;
-        }
+      nav ul li a:hover {
+        background: #00aaff;
+      }
 
-        .services {
-            text-align: center;
-            padding: 60px 20px;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
+      .services {
+        text-align: center;
+        padding: 60px 20px;
+        max-width: 1200px;
+        margin: 0 auto;
+      }
 
-        .services h1 {
-            font-size: 2.5rem;
-            color: #00aaff;
-            margin-bottom: 40px;
-        }
+      .services h1 {
+        font-size: 2.5rem;
+        color: #00aaff;
+        margin-bottom: 40px;
+      }
 
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-        }
+      .services-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 30px;
+      }
 
-        .service-card {
-            background: #fff;
-            border-radius: 10px;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-            overflow: hidden;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
-        }
+      .service-card {
+        background: #fff;
+        border-radius: 10px;
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        overflow: hidden;
+        transition: transform 0.3s ease, box-shadow 0.3s ease;
+      }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        }
+      .service-card:hover {
+        transform: translateY(-10px);
+        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+      }
 
-        .service-card img {
-            width: 100%;
-            height: auto;
-            border-bottom: 2px solid #00aaff;
-        }
+      .service-card img {
+        width: 100%;
+        height: auto;
+        border-bottom: 2px solid #00aaff;
+      }
 
+      .service-card h2 {
+        font-size: 1.8rem;
+        color: #333;
+        margin: 20px 0 10px;
+        padding: 0 20px;
+      }
+
+      .service-card p {
+        font-size: 1rem;
+        line-height: 1.6;
+        padding: 0 20px 20px;
+        color: #555;
+      }
+
+      footer {
+        background: #000;
+        color: #fff;
+        text-align: center;
+        padding: 1rem 0;
+        margin-top: 40px;
+      }
+
+      /* Responsive Design for Smaller Screens */
+      @media (max-width: 768px) {
         .service-card h2 {
-            font-size: 1.8rem;
-            color: #333;
-            margin: 20px 0 10px;
-            padding: 0 20px;
+          font-size: 1.5rem;
         }
 
         .service-card p {
-            font-size: 1rem;
-            line-height: 1.6;
-            padding: 0 20px 20px;
-            color: #555;
+          font-size: 0.95rem;
         }
 
-        footer {
-            background: #000;
-            color: #fff;
-            text-align: center;
-            padding: 1rem 0;
-            margin-top: 40px;
+        nav ul {
+          flex-direction: column;
         }
 
-        /* Responsive Design for Smaller Screens */
-        @media (max-width: 768px) {
-            .service-card h2 {
-                font-size: 1.5rem;
-            }
-
-            .service-card p {
-                font-size: 0.95rem;
-            }
-            
-            nav ul {
-                flex-direction: column;
-            }
-
-            nav ul li {
-                margin: 10px 0;
-            }
+        nav ul li {
+          margin: 10px 0;
         }
+      }
     </style>
-</head>
-<body>
+    <!-- Google tag (gtag.js) -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-S5XF78QXT2"></script>
+    <script>
+      window.dataLayer = window.dataLayer || [];
+      function gtag() {
+        dataLayer.push(arguments);
+      }
+      gtag("js", new Date());
+
+      gtag("config", "G-S5XF78QXT2");
+    </script>
+  </head>
+  <body>
     <header>
-        <nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <!--<li><a href="portfolio.html">Portfolio</a></li>-->
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <!--<li><a href="kinetic-techs.html">Kinetic Techs</a></li>-->
-            </ul>
-        </nav>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li><a href="about.html">About Us</a></li>
+          <li><a href="services.html">Services</a></li>
+          <!--<li><a href="portfolio.html">Portfolio</a></li>-->
+          <li><a href="blog.html">Blog</a></li>
+          <li><a href="contact.html">Contact Us</a></li>
+          <!--<li><a href="kinetic-techs.html">Kinetic Techs</a></li>-->
+        </ul>
+      </nav>
     </header>
     <section class="services">
-        <h1>Our Services</h1>
+      <h1>Our Services</h1>
 
-        <div class="services-grid">
-            <div class="service-card">
-                <img src="images/process-automation-1.jpg" alt="Process Automation">
-                <h2>Process Automation</h2>
-                <p>Optimize your operations with our versatile process automation solutions. From integrating with systems like QuickBase to handling complex tasks such as generating line items, POs, and invoices, we offer tailored automation that fits your specific needs. Our automation tools are designed to streamline manual processes, reduce human error, and save valuable time. By automating repetitive tasks, you can focus on higher-level business objectives and improve efficiency across your entire workflow.</p>
-                <p>We specialize in creating scalable solutions that grow with your business, whether you’re a small business looking to automate a few processes or a larger enterprise in need of a robust system overhaul. Our team works closely with you to understand your unique challenges and develop a custom solution that improves productivity, enhances accuracy, and drives operational excellence. Let us help you future-proof your business with our cutting-edge automation services.</p>
-            </div>
-        
-            <div class="service-card">
-                <img src="images/custom-websites.jpg" alt="Custom Websites">
-                <h2>Custom Websites</h2>
-                <p>Elevate your digital presence with a website designed just for you. Whether you need a simple, elegant site or a comprehensive platform like a custom CRM, our web development services are tailored to meet your unique requirements. We create websites that are not only visually appealing but also optimized for performance, ensuring fast load times, mobile responsiveness, and SEO-friendly design to help your business stand out in the digital space.</p>
-                <p>Our custom websites go beyond aesthetics — we integrate powerful features that allow you to manage your content, engage with customers, and track important metrics. From e-commerce platforms with seamless shopping experiences to dynamic blogs and portfolios, our team brings your vision to life. With expertise in the latest technologies and best practices, we ensure your website is secure, scalable, and built to meet the evolving demands of your business. Whether you’re starting from scratch or revamping an existing site, we provide end-to-end web development services to help you succeed online.</p>
-            </div>
+      <div class="services-grid">
+        <div class="service-card">
+          <img src="images/process-automation-1.jpg" alt="Process Automation" />
+          <h2>Process Automation</h2>
+          <p>
+            Optimize your operations with our versatile process automation
+            solutions. From integrating with systems like QuickBase to handling
+            complex tasks such as generating line items, POs, and invoices, we
+            offer tailored automation that fits your specific needs. Our
+            automation tools are designed to streamline manual processes, reduce
+            human error, and save valuable time. By automating repetitive tasks,
+            you can focus on higher-level business objectives and improve
+            efficiency across your entire workflow.
+          </p>
+          <p>
+            We specialize in creating scalable solutions that grow with your
+            business, whether you’re a small business looking to automate a few
+            processes or a larger enterprise in need of a robust system
+            overhaul. Our team works closely with you to understand your unique
+            challenges and develop a custom solution that improves productivity,
+            enhances accuracy, and drives operational excellence. Let us help
+            you future-proof your business with our cutting-edge automation
+            services.
+          </p>
         </div>
 
+        <div class="service-card">
+          <img src="images/custom-websites.jpg" alt="Custom Websites" />
+          <h2>Custom Websites</h2>
+          <p>
+            Elevate your digital presence with a website designed just for you.
+            Whether you need a simple, elegant site or a comprehensive platform
+            like a custom CRM, our web development services are tailored to meet
+            your unique requirements. We create websites that are not only
+            visually appealing but also optimized for performance, ensuring fast
+            load times, mobile responsiveness, and SEO-friendly design to help
+            your business stand out in the digital space.
+          </p>
+          <p>
+            Our custom websites go beyond aesthetics — we integrate powerful
+            features that allow you to manage your content, engage with
+            customers, and track important metrics. From e-commerce platforms
+            with seamless shopping experiences to dynamic blogs and portfolios,
+            our team brings your vision to life. With expertise in the latest
+            technologies and best practices, we ensure your website is secure,
+            scalable, and built to meet the evolving demands of your business.
+            Whether you’re starting from scratch or revamping an existing site,
+            we provide end-to-end web development services to help you succeed
+            online.
+          </p>
+        </div>
+      </div>
     </section>
     <footer>
-        <p>&copy; 2024 AutomateIT. All rights reserved.</p>
+      <p>&copy; 2024 AutomateIT. All rights reserved.</p>
     </footer>
-</body>
+  </body>
 </html>
