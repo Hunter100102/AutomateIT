@@ -2,4 +2,4 @@ User-agent: *
 Disallow: /private/
 Allow: /
 
-Sitemap: https://www.automateit.com/sitemap.xml
+Sitemap: https://www.automatingsolutions.com/sitemap.xml
