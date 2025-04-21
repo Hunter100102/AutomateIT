@@ -1,50 +1,30 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"
-    ></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
+      function gtag() { dataLayer.push(arguments); }
       gtag("js", new Date());
-
       gtag("config", "G-ZJ9F6BZ2N2");
     </script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta
-      name="description"
-      content="AutomateIT offers custom web development and process automation services tailored to your business needs. Enhance productivity and digital presence today."
-    />
+    <meta name="description" content="AutomateIT delivers scalable process automation and custom website development solutions tailored to your business needs." />
+    <meta name="keywords" content="custom automation, web development, CRM systems, QuickBase automation, website design" />
     <title>Services | AutomateIT</title>
-    <link
-      rel="canonical"
-      href="https://automatingsolutions.com/services.html"
-    />
+    <link rel="canonical" href="https://automatingsolutions.com/services.html" />
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="/my-favicon/favicon-96x96.png"
-      sizes="96x96"
-    />
+    <link rel="icon" type="image/png" href="/my-favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
     <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/my-favicon/apple-touch-icon.png"
-    />
-    <meta name="apple-mobile-web-app-title" content="AI Solutions" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="AutomateIT" />
     <link rel="manifest" href="/my-favicon/site.webmanifest" />
+
     <style>
-      /* General Styles */
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
@@ -55,7 +35,7 @@
       }
 
       header {
-        background: rgba(0, 0, 0, 0.8);
+        background: rgba(0, 0, 0, 0.9);
         color: #fff;
         padding: 1rem 0;
         text-align: center;
@@ -71,6 +51,7 @@
         margin: 0;
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
       }
 
       nav ul li {
@@ -98,28 +79,28 @@
       }
 
       .services h1 {
-        font-size: 2.5rem;
+        font-size: 2.8rem;
         color: #00aaff;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
       }
 
       .services-grid {
         display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-        gap: 30px;
+        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        gap: 40px;
       }
 
       .service-card {
         background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        border-radius: 12px;
+        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
         overflow: hidden;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .service-card:hover {
         transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
       }
 
       .service-card img {
@@ -129,15 +110,15 @@
       }
 
       .service-card h2 {
-        font-size: 1.8rem;
-        color: #333;
+        font-size: 1.9rem;
+        color: #222;
         margin: 20px 0 10px;
         padding: 0 20px;
       }
 
       .service-card p {
-        font-size: 1rem;
-        line-height: 1.6;
+        font-size: 1.05rem;
+        line-height: 1.7;
         padding: 0 20px 20px;
         color: #555;
       }
@@ -146,11 +127,11 @@
         background: #000;
         color: #fff;
         text-align: center;
-        padding: 1rem 0;
+        padding: 1rem;
         margin-top: 40px;
+        font-size: 0.9rem;
       }
 
-      /* Responsive Design for Smaller Screens */
       @media (max-width: 768px) {
         .service-card h2 {
           font-size: 1.5rem;
@@ -175,80 +156,38 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="services.html">Services</a></li>
-          <!--<li><a href="portfolio.html">Portfolio</a></li>-->
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <!--<li><a href="kinetic-techs.html">Kinetic Techs</a></li>-->
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
+
     <section class="services">
       <h1>Our Services</h1>
 
       <div class="services-grid">
         <div class="service-card">
-          <img
-            src="images/process-automation-1.jpg"
-            alt="Custom website development by AutomateIT and process automation"
-          />
+          <img src="images/process-automation-1.jpg" alt="Process automation services" />
           <h2>Process Automation</h2>
-          <p>
-            Optimize your operations with our versatile process automation
-            solutions. From integrating with systems like QuickBase to handling
-            complex tasks such as generating line items, POs, and invoices, we
-            offer tailored automation that fits your specific needs. Our
-            automation tools are designed to streamline manual processes, reduce
-            human error, and save valuable time. By automating repetitive tasks,
-            you can focus on higher-level business objectives and improve
-            efficiency across your entire workflow.
-          </p>
-          <p>
-            We specialize in creating scalable solutions that grow with your
-            business, whether you’re a small business looking to automate a few
-            processes or a larger enterprise in need of a robust system
-            overhaul. Our team works closely with you to understand your unique
-            challenges and develop a custom solution that improves productivity,
-            enhances accuracy, and drives operational excellence. Let us help
-            you future-proof your business with our cutting-edge automation
-            services.
-          </p>
+          <p>Automate manual workflows with intelligent systems that integrate seamlessly into your operations. From QuickBase to fully custom business tools, we tailor automation solutions to increase efficiency and reduce human error.</p>
+          <p>Our automation services empower businesses to save time and improve decision-making with real-time data flow and fewer repetitive tasks. Whether you're automating internal tasks or customer-facing processes, we’ve got your back.</p>
         </div>
 
         <div class="service-card">
-          <img
-            src="images/custom-websites.jpg"
-            alt="Custom website development by AutomateIT and process automation"
-          />
+          <img src="images/custom-websites.jpg" alt="Custom website development" />
           <h2>Custom Websites</h2>
-          <p>
-            Elevate your digital presence with a website designed just for you.
-            Whether you need a simple, elegant site or a comprehensive platform
-            like a custom CRM, our web development services are tailored to meet
-            your unique requirements. We create websites that are not only
-            visually appealing but also optimized for performance, ensuring fast
-            load times, mobile responsiveness, and SEO-friendly design to help
-            your business stand out in the digital space.
-          </p>
-          <p>
-            Our custom websites go beyond aesthetics — we integrate powerful
-            features that allow you to manage your content, engage with
-            customers, and track important metrics. From e-commerce platforms
-            with seamless shopping experiences to dynamic blogs and portfolios,
-            our team brings your vision to life. With expertise in the latest
-            technologies and best practices, we ensure your website is secure,
-            scalable, and built to meet the evolving demands of your business.
-            Whether you’re starting from scratch or revamping an existing site,
-            we provide end-to-end web development services to help you succeed
-            online.
-          </p>
+          <p>Design, build, and scale your digital presence with fully custom websites. From branded landing pages to complex web applications and internal CRMs, we deliver fast, secure, and mobile-ready solutions aligned with your business goals.</p>
+          <p>Whether you're launching a startup or refreshing an outdated platform, we help you build a compelling online experience that supports your strategy, boosts visibility, and drives conversions.</p>
         </div>
       </div>
     </section>
+
     <footer>
       <p>&copy; 2024 AutomateIT. All rights reserved.</p>
     </footer>
+
     <script type="application/ld+json">
       {
         "@context": "https://schema.org",
@@ -256,8 +195,7 @@
         "name": "AutomateIT",
         "description": "Custom software and website development services.",
         "url": "https://automatingsolutions.com/services",
-        "telephone": "+16782627635",
-        }
+        "telephone": "+16782627635"
       }
     </script>
   </body>

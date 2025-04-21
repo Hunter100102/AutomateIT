@@ -1,53 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"
-    ></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-ZJ9F6BZ2N2");
     </script>
+
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Explore expert insights from AutomateIT on automation, tech solutions, and digital transformation for small businesses." />
+    <meta name="keywords" content="automation blog, business tech, digital transformation, IT tips, automateIT" />
     <title>Blog | AutomateIT</title>
-    <link rel="canonical" href="https://automatingsolutions.com/" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="/my-favicon/favicon-96x96.png"
-      sizes="96x96"
-    />
+    <link rel="canonical" href="https://automatingsolutions.com/blog" />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="icon" type="image/png" href="/my-favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
     <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/my-favicon/apple-touch-icon.png"
-    />
-    <meta name="apple-mobile-web-app-title" content="AI Solutions" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="AutomateIT Blog" />
     <link rel="manifest" href="/my-favicon/site.webmanifest" />
-    <link rel="stylesheet" href="styles.css" />
+
     <style>
-      /* General Styles */
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
-        box-sizing: border-box;
-        background: #f0f0f0;
+        background: #f5f7fa;
         color: #333;
+        box-sizing: border-box;
       }
 
       header {
-        background: rgba(0, 0, 0, 0.8);
+        background: #000;
         color: #fff;
         padding: 1rem 0;
         text-align: center;
@@ -63,10 +53,11 @@
         margin: 0;
         display: flex;
         justify-content: center;
+        flex-wrap: wrap;
       }
 
       nav ul li {
-        margin: 0 15px;
+        margin: 0 12px;
       }
 
       nav ul li a {
@@ -89,36 +80,36 @@
       }
 
       .blog h1 {
-        font-size: 2.5rem;
+        font-size: 2.7rem;
         color: #00aaff;
         text-align: center;
-        margin-bottom: 40px;
+        margin-bottom: 50px;
       }
 
       .blog article {
         background: #fff;
-        border-radius: 10px;
-        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-        padding: 20px;
-        margin-bottom: 30px;
+        border-radius: 12px;
+        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+        padding: 25px;
+        margin-bottom: 40px;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
       }
 
       .blog article:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
+        transform: translateY(-8px);
+        box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
       }
 
       .blog h2 {
-        font-size: 2rem;
-        color: #333;
+        font-size: 1.9rem;
+        color: #222;
         margin-bottom: 15px;
       }
 
       .blog p {
         font-size: 1.1rem;
-        line-height: 1.6;
         color: #555;
+        line-height: 1.6;
         margin-bottom: 20px;
       }
 
@@ -130,52 +121,50 @@
 
       .blog ul li {
         margin-bottom: 10px;
+        font-size: 1.05rem;
+        color: #444;
       }
 
       .cta {
         display: inline-block;
         background: #00aaff;
         color: #fff;
-        padding: 10px 20px;
-        border-radius: 5px;
+        padding: 12px 24px;
+        font-weight: bold;
+        border-radius: 6px;
         text-decoration: none;
         transition: background 0.3s ease;
       }
 
       .cta:hover {
-        background: #0088cc;
+        background: #0077aa;
       }
 
       footer {
         background: #000;
         color: #fff;
         text-align: center;
-        padding: 1rem 0;
+        padding: 1rem;
+        font-size: 0.9rem;
         margin-top: 40px;
       }
 
-      /* Responsive Design for Smaller Screens */
       @media (max-width: 768px) {
         .blog h1 {
-          font-size: 2rem;
+          font-size: 2.2rem;
         }
-
         .blog h2 {
           font-size: 1.5rem;
         }
-
         .blog p {
           font-size: 1rem;
         }
-
         .cta {
-          padding: 8px 16px;
+          padding: 10px 20px;
         }
-
         nav ul {
           flex-direction: column;
         }
-
         nav ul li {
           margin: 10px 0;
         }
@@ -187,85 +176,42 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="services.html">Services</a></li>
-          <!--<li><a href="portfolio.html">Portfolio</a></li>-->
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <!--<li><a href="kinetic-techs.html">Kinetic Techs</a></li>-->
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
+
     <section class="blog">
       <h1>Industry Insights</h1>
 
       <article>
         <h2>The Benefits of Automation for Your Business</h2>
-        <p>
-          Automation is transforming the way businesses operate by improving
-          efficiency, reducing errors, and freeing up valuable time for more
-          strategic tasks. Here are some key benefits:
-        </p>
+        <p>Discover how automation can boost productivity, reduce costs, and improve service quality across your organization:</p>
         <ul>
-          <li>
-            <strong>Increased Productivity:</strong> Automating repetitive tasks
-            allows employees to focus on more important activities, boosting
-            overall productivity.
-          </li>
-          <li>
-            <strong>Cost Reduction:</strong> Automation can significantly reduce
-            operational costs. Many business leaders believe that automation can
-            cut costs by up to 50%.
-          </li>
-          <li>
-            <strong>Enhanced Accuracy:</strong> By reducing human error,
-            automation ensures more consistent and accurate results. This is
-            especially crucial in areas like data entry and financial
-            transactions.
-          </li>
-          <li>
-            <strong>Improved Customer Service:</strong> Automation tools such as
-            chatbots can handle customer inquiries efficiently, providing quick
-            and accurate responses, which enhances customer satisfaction.
-          </li>
+          <li><strong>Increased Productivity:</strong> Automate repetitive tasks so your team can focus on strategic priorities.</li>
+          <li><strong>Cost Reduction:</strong> Reduce overhead by optimizing resource allocation and minimizing waste.</li>
+          <li><strong>Enhanced Accuracy:</strong> Reduce human error with precise, consistent execution.</li>
+          <li><strong>Improved Customer Service:</strong> Use chatbots and CRMs to respond faster and more effectively.</li>
         </ul>
-        <a href="https://www.automationworld.com/" class="cta">Read More</a>
+        <a href="https://www.automationworld.com/" class="cta" target="_blank">Read More</a>
       </article>
 
       <article>
         <h2>How a Professional Website Can Boost Your Business</h2>
-        <p>
-          In today's digital age, having a professional-looking website is
-          crucial for any business. It serves as the face of your company and
-          can greatly influence customers' perceptions. Here's why it matters:
-        </p>
+        <p>Learn how your digital presence shapes trust, attracts leads, and creates a competitive edge:</p>
         <ul>
-          <li>
-            <strong>First Impressions Count:</strong> A well-designed website
-            creates a positive first impression. It can establish trust and
-            credibility with potential customers, making them more likely to
-            engage with your business.
-          </li>
-          <li>
-            <strong>Better User Experience:</strong> A professional website is
-            user-friendly, with intuitive navigation and clear information,
-            making it easy for visitors to find what they need and encouraging
-            them to spend more time on your site.
-          </li>
-          <li>
-            <strong>SEO Benefits:</strong> A professionally designed website is
-            optimized for search engines, which can improve your visibility and
-            attract more organic traffic.
-          </li>
-          <li>
-            <strong>Competitive Advantage:</strong> In a competitive market, a
-            high-quality website can set you apart from your competitors,
-            showcasing your professionalism and attention to detail.
-          </li>
+          <li><strong>First Impressions Matter:</strong> A sleek, functional site builds credibility instantly.</li>
+          <li><strong>Enhanced User Experience:</strong> Clean navigation keeps visitors engaged and informed.</li>
+          <li><strong>SEO Benefits:</strong> Optimize your content to rank higher and bring in organic traffic.</li>
+          <li><strong>Stand Out:</strong> Showcase your brand with design that reflects professionalism and value.</li>
         </ul>
-        <a href="https://www.businessnewsdaily.com/" class="cta">Read More</a>
+        <a href="https://www.businessnewsdaily.com/" class="cta" target="_blank">Read More</a>
       </article>
     </section>
+
     <footer>
       <p>&copy; 2024 AutomateIT. All rights reserved.</p>
     </footer>

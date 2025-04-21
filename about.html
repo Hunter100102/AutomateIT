@@ -1,54 +1,44 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"
-    ></script>
+    <!-- Google Analytics -->
+    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
         dataLayer.push(arguments);
       }
       gtag("js", new Date());
-
       gtag("config", "G-ZJ9F6BZ2N2");
     </script>
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="description" content="Learn about AutomateIT: our mission, our team, and how we help businesses thrive through custom automation solutions." />
+    <meta name="keywords" content="automation, business solutions, custom software, IT team, business mission" />
     <title>About Us | AutomateIT</title>
-    <link rel="canonical" href="https://automatingsolutions.com/" />
+    <link rel="canonical" href="https://automatingsolutions.com/about" />
+
     <link rel="stylesheet" href="styles.css" />
-    <link
-      rel="icon"
-      type="image/png"
-      href="/my-favicon/favicon-96x96.png"
-      sizes="96x96"
-    />
+    <link rel="icon" type="image/png" href="/my-favicon/favicon-96x96.png" sizes="96x96" />
     <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
     <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
-    <link
-      rel="apple-touch-icon"
-      sizes="180x180"
-      href="/my-favicon/apple-touch-icon.png"
-    />
-    <meta name="apple-mobile-web-app-title" content="AI Solutions" />
+    <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
+    <meta name="apple-mobile-web-app-title" content="AutomateIT" />
     <link rel="manifest" href="/my-favicon/site.webmanifest" />
+
     <style>
-      /* General Styles */
       body {
         font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
         margin: 0;
         padding: 0;
         box-sizing: border-box;
-        background: #f0f0f0;
+        background: #f7f9fc;
         color: #333;
       }
 
       header {
-        background: rgba(0, 0, 0, 0.8);
+        background: #000;
         color: #fff;
         padding: 1rem 0;
         text-align: center;
@@ -60,10 +50,11 @@
 
       nav ul {
         list-style: none;
-        padding: 0;
-        margin: 0;
         display: flex;
         justify-content: center;
+        padding: 0;
+        margin: 0;
+        flex-wrap: wrap;
       }
 
       nav ul li {
@@ -84,32 +75,28 @@
       }
 
       .hero {
-        background: url("images/about-us-background.jpg") no-repeat center
-          center/cover;
-        color: #ffffff;
-        padding: 95px 20px;
+        background: url("images/about-us-background.jpg") no-repeat center center/cover;
+        padding: 100px 20px;
         text-align: center;
-        box-shadow: inset 0 0 200px rgba(0, 0, 0, 0.5);
+        color: #fff;
+        box-shadow: inset 0 0 100px rgba(0, 0, 0, 0.6);
       }
 
       .hero h1 {
         font-size: 3rem;
-        margin-bottom: 20px;
-        text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
-        color: #fff;
+        margin-bottom: 15px;
       }
 
       .hero p {
         font-size: 1.5rem;
-        margin-bottom: 30px;
-        text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.5);
+        margin-bottom: 0;
       }
 
       .content {
         display: flex;
         flex-wrap: wrap;
         justify-content: center;
-        padding: 40px 20px;
+        padding: 50px 20px;
         background: #fff;
       }
 
@@ -118,82 +105,70 @@
         min-width: 300px;
         max-width: 600px;
         margin: 20px;
-        padding: 20px;
-        background: #f9f9f9;
-        border-radius: 10px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        padding: 25px;
+        background: #fefefe;
+        border-radius: 12px;
+        box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
       }
 
       .content-section h2 {
-        font-weight: 600;
-        margin-bottom: 20px;
         color: #00aaff;
+        font-size: 1.8rem;
+        margin-bottom: 15px;
       }
 
       .content-section p {
         font-size: 1.1rem;
-        margin-bottom: 20px;
         line-height: 1.6;
+        margin-bottom: 15px;
       }
 
       .founder {
         text-align: center;
-        padding: 40px 20px;
+        padding: 50px 20px;
         background: #f0f0f0;
       }
 
       .founder img {
-        max-width: 150px;
+        max-width: 140px;
         border-radius: 50%;
         margin-bottom: 20px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
       }
 
       .founder h3 {
-        font-size: 1.5rem;
+        font-size: 1.6rem;
         color: #333;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }
 
       .founder h4 {
         font-size: 1.2rem;
         color: #555;
-        font-weight: normal;
+        font-weight: 400;
       }
 
       footer {
         background: #000;
         color: #fff;
         text-align: center;
-        padding: 1rem 0;
+        padding: 1rem;
+        font-size: 0.9rem;
         margin-top: 40px;
       }
 
-      /* Responsive Styles */
       @media (max-width: 768px) {
         .hero h1 {
-          font-size: 2.5rem;
+          font-size: 2.4rem;
         }
-
         .hero p {
           font-size: 1.2rem;
         }
-
-        .content-section {
-          margin: 10px;
-          padding: 15px;
-        }
-
-        .founder img {
-          max-width: 120px;
-        }
-
         nav ul {
           flex-direction: column;
         }
-
         nav ul li {
-          margin: 10px 0;
+          margin: 8px 0;
         }
       }
 
@@ -201,23 +176,12 @@
         .hero h1 {
           font-size: 2rem;
         }
-
         .hero p {
           font-size: 1rem;
         }
-
-        .content-section {
-          margin: 5px;
-          padding: 10px;
-        }
-
         .founder img {
           max-width: 100px;
         }
-      }
-
-      .content-section h1 {
-        color: #00aaff;
       }
     </style>
   </head>
@@ -226,80 +190,43 @@
       <nav>
         <ul>
           <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About Us</a></li>
+          <li><a href="about.html">About</a></li>
           <li><a href="services.html">Services</a></li>
-          <!--<li><a href="portfolio.html">Portfolio</a></li>-->
           <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact Us</a></li>
-          <!--<li><a href="kinetic-techs.html">Kinetic Techs</a></li>-->
+          <li><a href="contact.html">Contact</a></li>
         </ul>
       </nav>
     </header>
+
     <section class="hero">
       <h1>About Us</h1>
-      <p>Empowering businesses with automation solutions</p>
+      <p>Empowering Businesses Through Smart Automation</p>
     </section>
+
     <section class="content">
       <div class="content-section">
         <h2>Our Mission</h2>
-        <p>
-          At AutomateIT, our mission is to transform the way businesses operate
-          by providing innovative and bespoke automation solutions that enable
-          organizations to thrive in an increasingly competitive marketplace. We
-          believe in the power of technology to streamline operations, reduce
-          inefficiencies, and create more agile, responsive businesses that are
-          prepared for the future.
-        </p>
-        <p>
-          We are committed to driving operational excellence by harnessing the
-          latest in automation technologies and industry best practices. Our
-          solutions are not only designed to meet immediate business needs but
-          are also built to evolve with your organization. Whether it’s
-          automating routine tasks, implementing complex systems, or integrating
-          advanced AI-driven tools, we ensure that our approach aligns perfectly
-          with your strategic goals.
-        </p>
-        <p>
-          Through our relentless focus on quality, efficiency, and scalability,
-          we help businesses reduce operational overhead, improve productivity,
-          and maximize ROI. At AutomateIT, we don't just deliver solutions — we
-          build partnerships that drive long-term success and foster a culture
-          of continuous improvement.
-        </p>
+        <p>AutomateIT transforms businesses with intelligent automation solutions that optimize workflows and maximize performance.</p>
+        <p>We deliver cutting-edge tools tailored to each client’s unique needs, helping businesses stay agile, reduce inefficiencies, and scale effortlessly.</p>
+        <p>By focusing on innovation, reliability, and client satisfaction, we create solutions that evolve with our partners for long-term success.</p>
       </div>
+
       <div class="content-section">
         <h2>Our Team</h2>
-        <p>
-          The strength of AutomateIT lies in the expertise and dedication of our
-          team. Comprised of seasoned professionals with diverse backgrounds in
-          technology, automation, and business processes, our team brings a
-          wealth of experience and insight to every project we undertake. Each
-          member of our team is driven by a passion for innovation and a
-          commitment to helping our clients achieve their business objectives
-          through automation.
-        </p>
-        <p>
-          We pride ourselves on fostering a collaborative and forward-thinking
-          environment where creativity and technical expertise come together to
-          produce exceptional results. Our team is adept at identifying unique
-          opportunities for automation, tailoring solutions that align with your
-          specific industry needs, and ensuring seamless integration into your
-          existing operations.
-        </p>
-        <p>
-          With a strong focus on client success and a deep understanding of the
-          challenges businesses face, our team stands ready to deliver powerful
-          automation solutions that make a real impact. We are more than just a
-          service provider; we are your strategic partner in achieving sustained
-          growth and operational excellence.
-        </p>
+        <p>We are a collective of passionate developers, engineers, and business experts united by a shared goal: to revolutionize how businesses operate.</p>
+        <p>Our cross-functional team brings both technical mastery and strategic insight, enabling us to craft meaningful, measurable results for every project.</p>
+        <p>From ideation to implementation, our collaborative approach ensures seamless integration, lasting impact, and genuine client satisfaction.</p>
       </div>
     </section>
-    <!--<section class="founder">
-        <img src="images/cody.jpg" alt="Owner and Founder" title="Owner and Founder, Cody Hunter">
-        <h3>William Hunter</h3>
-        <h4>Owner and Founder</h4>
-    </section>-->
+
+    <!-- Uncomment if you want to add founder section
+    <section class="founder">
+      <img src="images/cody.jpg" alt="William Hunter - Founder" />
+      <h3>William Hunter</h3>
+      <h4>Founder & Visionary</h4>
+    </section>
+    -->
+
     <footer>
       <p>&copy; 2024 AutomateIT. All rights reserved.</p>
     </footer>

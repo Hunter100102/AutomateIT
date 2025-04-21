@@ -1,255 +1,199 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google tag (gtag.js) -->
-    <script
-      async
-      src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"
-    ></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() { dataLayer.push(arguments); }
+    gtag("js", new Date());
+    gtag("config", "G-ZJ9F6BZ2N2");
+  </script>
+
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Discover what makes Kinetic Techs stand out in low voltage and IT infrastructure services. Learn more about our tailored solutions, expert team, and 24/7 support." />
+  <meta name="keywords" content="low voltage IT services, custom cabling, network solutions, Kinetic Techs" />
+  <title>Why Kinetic Techs? | AutomateIT</title>
+
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: url("images/learn-more-background.jpg") no-repeat center center/cover;
+      min-height: 100vh;
+      color: #333;
+    }
+
+    header {
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      padding: 0;
+      margin: 0;
+      flex-wrap: wrap;
+    }
+
+    nav ul li {
+      margin: 0 15px;
+    }
+
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: bold;
+      padding: 10px 15px;
+      border-radius: 5px;
+      transition: background 0.3s ease;
+    }
+
+    nav ul li a:hover {
+      background: #00aaff;
+    }
+
+    .content-container {
+      background: rgba(255, 255, 255, 0.9);
+      margin: 60px auto;
+      padding: 50px 30px;
+      max-width: 900px;
+      border-radius: 12px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+    }
+
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 25px;
+      color: #00aaff;
+      text-align: center;
+    }
+
+    p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      margin: 20px 0;
+    }
+
+    ul {
+      padding-left: 20px;
+      margin: 30px 0;
+    }
+
+    ul li {
+      font-size: 1.1rem;
+      margin-bottom: 12px;
+    }
+
+    ul li strong {
+      color: #00aaff;
+    }
+
+    .cta {
+      display: inline-block;
+      background: #00aaff;
+      color: #fff;
+      padding: 15px 35px;
+      text-decoration: none;
+      border-radius: 6px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      transition: background 0.3s ease;
+      margin-top: 25px;
+    }
+
+    .cta:hover {
+      background: #0077aa;
+    }
+
+    footer {
+      background: #000;
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      font-size: 0.9rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      h1 {
+        font-size: 2.2rem;
       }
-      gtag("js", new Date());
 
-      gtag("config", "G-ZJ9F6BZ2N2");
-    </script>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Learn More | Kinetic Techs</title>
-    <style>
-      /* General Styles */
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background: url("images/learn-more-background.jpg") no-repeat center
-          center;
-        background-size: cover;
-        min-height: 100vh;
-        color: #333;
-      }
-
-      header {
-        background: rgba(0, 0, 0, 0.8);
-        color: #fff;
-        padding: 1rem 0;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-      }
-
-      nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-      }
-
-      nav ul li {
-        margin: 0 15px;
-      }
-
-      nav ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 10px 15px;
-        border-radius: 5px;
-        transition: background 0.3s ease;
-      }
-
-      nav ul li a:hover {
-        background: #00aaff;
+      p, ul li {
+        font-size: 1rem;
       }
 
       .content-container {
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        padding: 50px;
-        background: rgba(255, 255, 255, 0.85);
-        border-radius: 15px;
-        box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2);
-        margin: 50px auto;
-        max-width: 900px;
-      }
-
-      h1 {
-        font-size: 3rem;
-        margin-bottom: 20px;
-        color: #333;
-      }
-
-      p {
-        font-size: 1.2rem;
-        line-height: 1.6;
-        margin: 15px 0;
-        color: #333;
-      }
-
-      ul {
-        list-style-type: none;
-        padding: 0;
-        margin: 20px 0;
-        text-align: left;
-      }
-
-      ul li {
-        font-size: 1.2rem;
-        margin: 10px 0;
-      }
-
-      ul li strong {
-        color: #00aaff;
+        padding: 30px 20px;
+        margin: 30px 20px;
       }
 
       .cta {
-        background: #00aaff;
-        color: #fff;
-        padding: 15px 30px;
-        text-decoration: none;
-        border-radius: 5px;
-        margin-top: 30px;
-        display: inline-block;
-        font-size: 1.2rem;
-        transition: background 0.3s ease;
+        padding: 12px 28px;
       }
+    }
 
-      .cta:hover {
-        background: #0088cc;
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 2rem;
       }
-
-      footer {
-        background: rgba(0, 0, 0, 0.8);
-        color: #fff;
-        text-align: center;
-        padding: 1rem 0;
-        position: fixed;
-        bottom: 0;
-        width: 100%;
+      p, ul li {
+        font-size: 0.95rem;
       }
-
-      /* Responsive Styles */
-      @media (max-width: 768px) {
-        h1 {
-          font-size: 2.5rem;
-        }
-
-        p {
-          font-size: 1rem;
-        }
-
-        ul li {
-          font-size: 1rem;
-        }
-
-        .content-container {
-          padding: 20px;
-          margin: 20px;
-        }
-      }
-
-      @media (max-width: 480px) {
-        h1 {
-          font-size: 2rem;
-        }
-
-        p {
-          font-size: 0.9rem;
-        }
-
-        ul li {
-          font-size: 0.9rem;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <!--<nav>
-            <ul>
-                <li><a href="index.html">Home</a></li>
-                <li><a href="about.html">About Us</a></li>
-                <li><a href="services.html">Services</a></li>
-                <li><a href="blog.html">Blog</a></li>
-                <li><a href="contact.html">Contact Us</a></li>
-                <li><a href="kinetic-techs.html">Kinetic Techs</a></li>
-            </ul>
-        </nav>-->
-    </header>
-
-    <div class="content-container">
-      <h1>What Sets Kinetic Techs Apart?</h1>
-      <p>
-        At Kinetic Techs, we believe in providing comprehensive, personalized IT
-        and low voltage services designed specifically to address your
-        business's unique needs. Our goal is to ensure your technology
-        infrastructure not only works efficiently but grows with you as your
-        business evolves.
-      </p>
-
-      <p>Here are just a few reasons why our clients choose Kinetic Techs:</p>
-
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <nav>
       <ul>
-        <li>
-          <strong>Customized Solutions</strong> - We don’t believe in
-          one-size-fits-all approaches. Every project is tailored to match the
-          specific needs of your business, ensuring your network and systems are
-          optimized for your success.
-        </li>
-        <li>
-          <strong>Expert Technicians</strong> - Our team is made up of certified
-          professionals with years of industry experience. Whether it's cabling,
-          network design, or security system installations, we have the
-          expertise to handle any challenge.
-        </li>
-        <li>
-          <strong>End-to-End Service</strong> - From consultation to
-          installation and ongoing maintenance, we manage every aspect of your
-          IT infrastructure, so you can focus on growing your business while we
-          handle the tech.
-        </li>
-        <li>
-          <strong>Scalability</strong> - As your business expands, so will your
-          technology needs. Our solutions are designed with scalability in mind,
-          so your network can grow seamlessly without disruptions.
-        </li>
-        <li>
-          <strong>Cutting-Edge Technology</strong> - We stay ahead of the curve
-          by using the latest tools and technology, ensuring that your business
-          has access to the most advanced IT solutions on the market.
-        </li>
-        <li>
-          <strong>24/7 Support</strong> - Technology issues can happen at any
-          time. That’s why we offer round-the-clock support to ensure minimal
-          downtime and quick resolutions to any problem.
-        </li>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="kinetic-techs.html">Kinetic Techs</a></li>
       </ul>
+    </nav>
+  </header>
 
-      <p>
-        We are proud to be the trusted IT partner for businesses across various
-        industries. Our commitment to delivering reliable, high-quality services
-        has helped countless companies streamline operations and enhance
-        productivity.
-      </p>
+  <div class="content-container">
+    <h1>What Sets Kinetic Techs Apart?</h1>
 
-      <p>
-        Want to learn more about how Kinetic Techs can enhance your business?
-        <a href="contactus.html">Get in touch with us today</a> to schedule a
-        free consultation!
-      </p>
+    <p>At Kinetic Techs, we believe in tailored low voltage and IT infrastructure solutions designed to evolve with your business. Our mission is to keep your technology ahead of the curve.</p>
 
-      <a href="contactus.html" class="cta">Contact Us Today</a>
-    </div>
+    <p>Here’s why our partners choose Kinetic Techs:</p>
 
-    <footer>
-      <p>&copy; 2024 Kinetic Techs. All rights reserved.</p>
-    </footer>
-  </body>
+    <ul>
+      <li><strong>Customized Solutions:</strong> Every installation is built around your business goals, not out-of-the-box templates.</li>
+      <li><strong>Expert Technicians:</strong> Certified pros with hands-on experience in data cabling, AV integration, security, and networking.</li>
+      <li><strong>End-to-End Management:</strong> From planning to implementation and ongoing maintenance—we’ve got you covered.</li>
+      <li><strong>Future-Ready Infrastructure:</strong> Our scalable designs grow with your team, devices, and connectivity demands.</li>
+      <li><strong>Top-Tier Equipment:</strong> We use cutting-edge tools and materials to guarantee performance and longevity.</li>
+      <li><strong>24/7 Support:</strong> On-call tech support that keeps your business online, all the time.</li>
+    </ul>
+
+    <p>Whether you’re a small business, a large facility, or anything in between—we’re here to modernize your infrastructure with confidence and care.</p>
+
+    <p><a href="contactus.html">Schedule a free consultation</a> today and let’s discuss how we can power your progress.</p>
+
+    <a href="contactus.html" class="cta">Contact Us Today</a>
+  </div>
+
+  <footer>
+    <p>&copy; 2024 Kinetic Techs. All rights reserved.</p>
+  </footer>
+</body>
 </html>
