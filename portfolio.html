@@ -1,170 +1,243 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() {
-        dataLayer.push(arguments);
-      }
-      gtag("js", new Date());
-      gtag("config", "G-ZJ9F6BZ2N2");
-    </script>
+<head>
+  <!-- Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"></script>
+  <script>
+    window.dataLayer = window.dataLayer || [];
+    function gtag() {
+      dataLayer.push(arguments);
+    }
+    gtag("js", new Date());
+    gtag("config", "G-ZJ9F6BZ2N2");
+  </script>
 
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Explore AutomateIT's project portfolio. See how we've delivered innovative automation solutions tailored to each client's needs." />
-    <meta name="keywords" content="AutomateIT, portfolio, automation projects, software development, tech solutions" />
-    <title>Portfolio | AutomateIT</title>
-    <link rel="stylesheet" href="styles.css" />
-    <style>
-      body {
-        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        background: #f5f5f5;
-        color: #333;
-      }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Client Portfolio | AutomateIT</title>
+  <meta name="description" content="Explore our custom-built client websites and automation solutions created by AutomateIT to help businesses grow.">
+  <meta name="keywords" content="website portfolio, custom websites, business automation, AutomateIT, client projects">
+  <meta property="og:title" content="Client Portfolio | AutomateIT">
+  <meta property="og:description" content="Custom Websites and Automation Systems Developed by AutomateIT">
+  <meta property="og:image" content="images/security.png">
+  <meta property="og:url" content="https://www.automatingsolutions.com/portfolio.html">
+  <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
 
-      header {
-        background: #000;
-        color: #fff;
-        padding: 1rem 0;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      }
+  <link rel="canonical" href="https://www.automatingsolutions.com/portfolio.html" />
+  <link rel="icon" type="image/png" sizes="96x96" href="/my-favicon/favicon-96x96.png" />
+  <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
+  <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
+  <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
+  <link rel="manifest" href="/my-favicon/site.webmanifest" />
 
-      nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
+  <style>
+    body {
+      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      background: url("images/security.png") no-repeat center center;
+      background-size: cover;
+      min-height: 100vh;
+      color: #333;
+    }
 
-      nav ul li {
-        margin: 0 15px;
-      }
+    header {
+      background: rgba(0, 0, 0, 0.9);
+      color: #fff;
+      padding: 1rem;
+      text-align: center;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
 
-      nav ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 10px 15px;
-        border-radius: 5px;
-        transition: background 0.3s ease;
-      }
+    nav ul {
+      list-style: none;
+      display: flex;
+      justify-content: center;
+      margin: 0;
+      padding: 0;
+      flex-wrap: wrap;
+    }
 
-      nav ul li a:hover {
-        background: #00aaff;
-      }
+    nav ul li {
+      margin: 0 12px;
+    }
 
-      .portfolio {
-        max-width: 1200px;
-        margin: 80px auto;
-        padding: 20px;
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
-      }
+    nav ul li a {
+      color: #fff;
+      text-decoration: none;
+      font-weight: 600;
+      padding: 10px 20px;
+      border-radius: 8px;
+      transition: background 0.3s;
+    }
 
-      .portfolio h1 {
-        font-size: 2.8rem;
-        text-align: center;
-        color: #00aaff;
-        margin-bottom: 40px;
-      }
+    nav ul li a:hover {
+      background: #00aaff;
+    }
 
-      .project {
-        margin-bottom: 40px;
-        padding: 20px;
-        border-left: 5px solid #00aaff;
-        background: #f9f9f9;
-        border-radius: 8px;
-      }
+    .hero {
+      background: rgba(255, 255, 255, 0.85);
+      margin: 100px auto 50px;
+      padding: 60px 30px;
+      max-width: 1000px;
+      border-radius: 20px;
+      text-align: center;
+      box-shadow: 0 8px 30px rgba(0, 0, 0, 0.15);
+    }
 
-      .project h2 {
+    .hero h1 {
+      font-size: 3rem;
+      margin-bottom: 1rem;
+    }
+
+    .hero p {
+      font-size: 1.25rem;
+      margin-bottom: 2rem;
+    }
+
+    .portfolio-item {
+      background: rgba(255, 255, 255, 0.95);
+      border-radius: 15px;
+      margin: 20px auto;
+      padding: 30px;
+      max-width: 900px;
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0.1);
+      text-align: left;
+    }
+
+    .portfolio-item h2 a {
+      color: #00aaff;
+      text-decoration: none;
+      font-size: 2rem;
+    }
+
+    .portfolio-item h2 a:hover {
+      text-decoration: underline;
+    }
+
+    .portfolio-item p {
+      font-size: 1.1rem;
+      margin: 10px 0 20px;
+    }
+
+    .features {
+      list-style: none;
+      padding: 0;
+      margin-bottom: 20px;
+    }
+
+    .features li {
+      margin-bottom: 10px;
+      padding-left: 25px;
+      position: relative;
+    }
+
+    .features li::before {
+      content: "✔️";
+      position: absolute;
+      left: 0;
+    }
+
+    .cta {
+      display: inline-block;
+      background: #00aaff;
+      color: #fff;
+      padding: 15px 30px;
+      font-size: 1.1rem;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: background 0.3s ease;
+    }
+
+    .cta:hover {
+      background: #0077aa;
+    }
+
+    footer {
+      background: rgba(0, 0, 0, 0.85);
+      color: #fff;
+      text-align: center;
+      padding: 1rem;
+      position: fixed;
+      bottom: 0;
+      width: 100%;
+      font-size: 0.9rem;
+    }
+
+    main {
+      padding-bottom: 120px; 
+    }
+
+    @media (max-width: 768px) {
+      .hero h1 {
+        font-size: 2.2rem;
+      }
+      .hero p {
+        font-size: 1rem;
+      }
+      .portfolio-item h2 a {
+        font-size: 1.7rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .hero h1 {
         font-size: 1.8rem;
-        color: #222;
-        margin-bottom: 10px;
       }
-
-      .project p {
-        font-size: 1.1rem;
-        color: #555;
-        line-height: 1.6;
+      .hero p {
+        font-size: 0.95rem;
       }
-
-      footer {
-        background: #000;
-        color: #fff;
-        text-align: center;
-        padding: 1rem;
-        font-size: 0.9rem;
+      nav ul {
+        flex-direction: column;
       }
-
-      @media (max-width: 768px) {
-        .portfolio h1 {
-          font-size: 2.2rem;
-        }
-
-        .project h2 {
-          font-size: 1.5rem;
-        }
-
-        .project p {
-          font-size: 1rem;
-        }
-
-        nav ul {
-          flex-direction: column;
-        }
-
-        nav ul li {
-          margin: 10px 0;
-        }
+      nav ul li {
+        margin: 10px 0;
       }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-        </ul>
-      </nav>
-    </header>
+    }
+  </style>
+</head>
 
-    <section class="portfolio">
-      <h1>Our Portfolio</h1>
+<body>
+  <header>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="services.html">Services</a></li>
+        <li><a href="blog.html">Blog</a></li>
+        <li><a href="contact.html">Contact</a></li>
+        <li><a href="portfolio.html">Client Portfolio</a></li>
+      </ul>
+    </nav>
+  </header>
 
-      <div class="project">
-        <h2>Smart Inventory Tracker</h2>
-        <p>A custom-built automation tool for a retail chain to manage real-time inventory updates using barcode scanning and cloud sync. Reduced manual errors by 85% and improved stock insights across 10 locations.</p>
-      </div>
-
-      <div class="project">
-        <h2>QuickBase API Integration</h2>
-        <p>Designed a solution to automate PO, invoice, and line-item creation inside QuickBase. This streamlined the finance workflow and reduced entry time by 70% for the client’s accounting team.</p>
-      </div>
-
-      <div class="project">
-        <h2>MNIST Digit Recognition</h2>
-        <p>Developed a machine learning model that accurately identifies handwritten digits using the MNIST dataset. Served as part of a learning showcase for computer vision and neural networks.</p>
-      </div>
+  <main>
+    <section class="hero">
+      <h1>Client Portfolios</h1>
+      <p>Explore the custom websites and automation solutions we've created to help businesses grow and succeed.</p>
     </section>
 
-    <footer>
-      <p>&copy; 2024 AutomateIT. All rights reserved.</p>
-    </footer>
-  </body>
+    <section class="portfolio-item">
+      <h2><a href="https://www.hookahbar.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">Moustache Hookah Lounge</a></h2>
+      <p>A modern, vibrant website for a hookah lounge based in Sandy Springs, Georgia. Designed to engage customers while supporting staff and management operations.</p>
+      <ul class="features">
+        <li>Customer & Employee Interfaces</li>
+        <li>Event Scheduling & VIP Membership System</li>
+        <li>Task Tracking, Approval, and Time Clock Systems</li>
+        <li>MySQL Database & Secure PHP Backend</li>
+        <li>Square POS Integration Planned</li>
+      </ul>
+      <a class="cta" href="https://www.hookahbar.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">Visit Website</a>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2024 AutomateIT. All rights reserved.</p>
+  </footer>
+</body>
 </html>
