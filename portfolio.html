@@ -5,15 +5,13 @@
   <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"></script>
   <script>
     window.dataLayer = window.dataLayer || [];
-    function gtag() {
-      dataLayer.push(arguments);
-    }
+    function gtag() { dataLayer.push(arguments); }
     gtag("js", new Date());
     gtag("config", "G-ZJ9F6BZ2N2");
   </script>
 
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Client Portfolio | AutomateIT</title>
   <meta name="description" content="Explore our custom-built client websites and automation solutions created by AutomateIT to help businesses grow.">
   <meta name="keywords" content="website portfolio, custom websites, business automation, AutomateIT, client projects">
@@ -109,6 +107,15 @@
       text-align: left;
     }
 
+    .centered-demo {
+      text-align: center;
+    }
+
+    .centered-demo ul.features {
+      display: inline-block;
+      text-align: left;
+    }
+
     .portfolio-item h2 a {
       color: #00aaff;
       text-decoration: none;
@@ -158,6 +165,35 @@
       background: #0077aa;
     }
 
+    code {
+      background-color: #f0f0f0;
+      padding: 3px 6px;
+      border-radius: 4px;
+      font-size: 0.95rem;
+    }
+
+    input[type="password"] {
+      border: 1px solid #ccc;
+      padding: 5px;
+      border-radius: 4px;
+      width: 100px;
+    }
+
+    button {
+      margin-left: 6px;
+      padding: 5px 10px;
+      font-size: 0.9rem;
+      cursor: pointer;
+      border-radius: 4px;
+      border: none;
+      background-color: #00aaff;
+      color: white;
+    }
+
+    button:hover {
+      background-color: #0077aa;
+    }
+
     footer {
       background: rgba(0, 0, 0, 0.85);
       color: #fff;
@@ -170,7 +206,7 @@
     }
 
     main {
-      padding-bottom: 120px; 
+      padding-bottom: 160px;
     }
 
     @media (max-width: 768px) {
@@ -234,10 +270,66 @@
       </ul>
       <a class="cta" href="https://www.hookahbar.infinityfreeapp.com/" target="_blank" rel="noopener noreferrer">Visit Website</a>
     </section>
+
+    <section class="portfolio-item centered-demo">
+      <h2>🧪 Try the Backend Demo</h2>
+      <p>Experience our live backend system for <strong>Moustache Hookah Lounge</strong>. Test different roles and see the full functionality!</p>
+
+      <details>
+        <summary><strong>How to Use</strong></summary>
+        <p>Use the credentials below to log in and explore:</p>
+        <ul class="features">
+          <li>Manager Dashboard with scheduling, tasks, and time tracking</li>
+          <li>Employee Task Lists, Clock-in/out, and Schedule View</li>
+          <li>Customer VIP Access, Event Booking, and Menu Interactions</li>
+        </ul>
+      </details>
+
+      <div style="margin-top: 20px;">
+        <table style="margin: 0 auto; text-align: left;">
+          <tr><th>Role</th><th>Username</th><th>Password</th></tr>
+          <tr>
+            <td>Manager</td>
+            <td><code>manager</code></td>
+            <td>
+              <input type="password" value="letmein2" readonly id="pwdManager">
+              <button onclick="togglePassword('pwdManager')">👁️</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Employee</td>
+            <td><code>employee</code></td>
+            <td>
+              <input type="password" value="letmein1" readonly id="pwdEmployee">
+              <button onclick="togglePassword('pwdEmployee')">👁️</button>
+            </td>
+          </tr>
+          <tr>
+            <td>Customer</td>
+            <td><code>customer</code></td>
+            <td>
+              <input type="password" value="letmein" readonly id="pwdCustomer">
+              <button onclick="togglePassword('pwdCustomer')">👁️</button>
+            </td>
+          </tr>
+        </table>
+      </div>
+
+      <p style="margin-top: 20px;">
+        <a class="cta" href="https://www.hookahbar.infinityfreeapp.com/signin.php" target="_blank" rel="noopener noreferrer">Go to Demo Login</a>
+      </p>
+    </section>
   </main>
 
   <footer>
     <p>&copy; 2024 AutomateIT. All rights reserved.</p>
   </footer>
+
+  <script>
+    function togglePassword(id) {
+      const input = document.getElementById(id);
+      input.type = input.type === "password" ? "text" : "password";
+    }
+  </script>
 </body>
 </html>
