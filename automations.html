@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Smart Data Analyzer</title>
+  <style>
+    body { font-family: Arial; padding: 20px; max-width: 800px; margin: auto; }
+    textarea, input, button { width: 100%; margin-top: 10px; padding: 10px; }
+    pre { background: #f4f4f4; padding: 15px; }
+    img { max-width: 100%; margin-top: 20px; }
+  </style>
+</head>
+<body>
+  <h1>📊 Smart Data Analyzer</h1>
+  <p>Upload a CSV or Excel file. This tool will analyze it, show charts, and give insights automatically.</p>
+
+  <form id="upload-form" enctype="multipart/form-data">
+    <input type="file" name="datafile" accept=".csv,.xlsx" required />
+    <button type="submit">Analyze</button>
+  </form>
+
+  <h3>Insights:</h3>
+  <pre id="results"></pre>
+  <div id="chart-area"></div>
+
+  <script>
+    document.getElementById("upload-form").addEventListener("submit", function (e) {
+      e.preventDefault();
+      const formData = new FormData(this);
+
+      fetch("/api/analyze-data", {
+        method: "POST",
+        body: formData
+      })
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("results").textContent = data.insights;
+        if (data.chart) {
+          document.getElementById("chart-area").innerHTML = `<img src="${data.chart}" alt="Chart" />`;
+        }
+      })
+      .catch(err => {
+        console.error(err);
+        document.getElementById("results").textContent = "An error occurred during analysis.";
+      });
+    });
+  </script>
+</body>
+</html>
