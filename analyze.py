@@ -4,18 +4,18 @@ import matplotlib.pyplot as plt
 import base64
 from io import BytesIO
 
-# Load file from command line
+# Load Excel file
 file_path = sys.argv[1]
 df = pd.read_excel(file_path)
 
-# Clean and convert data
+# Clean data
 df = df.dropna(how='all', axis=1).dropna(how='all')
 df = df[['Description', 'Cost Per Month', 'Cost Per Year']]
 df['Cost Per Month'] = pd.to_numeric(df['Cost Per Month'], errors='coerce').fillna(0)
 df['Cost Per Year'] = pd.to_numeric(df['Cost Per Year'], errors='coerce').fillna(0)
 df['Description'] = df['Description'].astype(str)
 
-# Generate insights
+# Create insights
 total_monthly = df['Cost Per Month'].sum()
 total_yearly = df['Cost Per Year'].sum()
 insights = f"""
@@ -28,7 +28,7 @@ Average Yearly Cost per Item: ${df['Cost Per Year'].mean():.2f}
 Highest Yearly Expense: {df.loc[df['Cost Per Year'].idxmax(), 'Description']} (${df['Cost Per Year'].max():.2f})
 """
 
-# Plot chart
+# Create chart
 plt.figure(figsize=(10, 5))
 df_sorted = df.sort_values('Cost Per Year', ascending=False)
 plt.bar(df_sorted['Description'], df_sorted['Cost Per Year'])
@@ -36,13 +36,13 @@ plt.xticks(rotation=45, ha='right')
 plt.title('Yearly Cost by Expense Category')
 plt.tight_layout()
 
-# Convert chart to base64
+# Encode chart
 buffer = BytesIO()
 plt.savefig(buffer, format='png')
 buffer.seek(0)
 chart_base64 = base64.b64encode(buffer.read()).decode('utf-8')
 
-# Output insights and chart with delimiter
+# Output
 print(insights.strip())
 print('---chart---')
 print(chart_base64)
