@@ -1,34 +1,50 @@
 import sys
 import pandas as pd
 import matplotlib.pyplot as plt
-import seaborn as sns
-import io
 import base64
+from io import BytesIO
 
+# Load file from command line
 file_path = sys.argv[1]
+df = pd.read_excel(file_path)
 
-if file_path.endswith('.csv'):
-    df = pd.read_csv(file_path)
-else:
-    df = pd.read_excel(file_path)
+# Clean and convert data
+df = df.dropna(how='all', axis=1).dropna(how='all')
+df = df[['Description', 'Cost Per Month', 'Cost Per Year']]
+df['Cost Per Month'] = pd.to_numeric(df['Cost Per Month'], errors='coerce').fillna(0)
+df['Cost Per Year'] = pd.to_numeric(df['Cost Per Year'], errors='coerce').fillna(0)
+df['Description'] = df['Description'].astype(str)
 
-summary = df.describe(include='all').to_string()
-nulls = df.isnull().sum().to_string()
-insights = f"Summary:\n{summary}\n\nMissing Values:\n{nulls}"
+# Generate insights
+total_monthly = df['Cost Per Month'].sum()
+total_yearly = df['Cost Per Year'].sum()
+insights = f"""
+📊 Summary of Expenses
+---------------------
+Total Monthly Cost: ${total_monthly:.2f}
+Total Yearly Cost: ${total_yearly:.2f}
+Average Monthly Cost per Item: ${df['Cost Per Month'].mean():.2f}
+Average Yearly Cost per Item: ${df['Cost Per Year'].mean():.2f}
+Highest Yearly Expense: {df.loc[df['Cost Per Year'].idxmax(), 'Description']} (${df['Cost Per Year'].max():.2f})
+"""
 
-numeric_cols = df.select_dtypes(include=['number']).columns
-chart_base64 = ''
-if len(numeric_cols) >= 1:
-    plt.figure(figsize=(8, 5))
-    sns.histplot(df[numeric_cols[0]].dropna(), kde=True)
-    plt.title(f'Distribution of {numeric_cols[0]}')
+# Plot chart
+plt.figure(figsize=(10, 5))
+df_sorted = df.sort_values('Cost Per Year', ascending=False)
+plt.bar(df_sorted['Description'], df_sorted['Cost Per Year'])
+plt.xticks(rotation=45, ha='right')
+plt.title('Yearly Cost by Expense Category')
+plt.tight_layout()
 
-    buffer = io.BytesIO()
-    plt.savefig(buffer, format='png')
-    buffer.seek(0)
-    chart_base64 = base64.b64encode(buffer.read()).decode('utf-8')
-    buffer.close()
+# Convert chart to base64
+buffer = BytesIO()
+plt.savefig(buffer, format='png')
+buffer.seek(0)
+chart_base64 = base64.b64encode(buffer.read()).decode('utf-8')
 
-print(insights)
-print("---chart---")
+# Output insights and chart with delimiter
+print(insights.strip())
+print('---chart---')
 print(chart_base64)
+print('---table---')
+print(df.to_html(index=False, classes='expense-table', border=0))
