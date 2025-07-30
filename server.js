@@ -11,7 +11,13 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Enable CORS for all origins (replace * with your GitHub Pages URL if needed)
-app.use(cors());
+const corsOptions = {
+  origin: ['https://automatingsolutions.com', 'https://hunter100102.github.io'],
+  optionsSuccessStatus: 200
+};
+
+app.use(cors(corsOptions));
+
 
 sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
