@@ -40,28 +40,3 @@ app.use(express.static('public'));
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
-
-const multer = require('multer');
-const path = require('path');
-const { spawn } = require('child_process');
-const upload = multer({ dest: 'uploads/' });
-
-// Serve automations page
-app.get('/automations', (req, res) => {
-  res.sendFile(path.join(__dirname, 'automations.html'));
-});
-
-// API route for analyzing Excel/CSV
-app.post('/api/analyze-data', upload.single('datafile'), (req, res) => {
-  const filePath = req.file.path;
-
-  const py = spawn('python', ['analyze.py', filePath]);
-
-  let result = '';
-  py.stdout.on('data', (data) => result += data.toString());
-  py.stderr.on('data', (err) => console.error('Python Error:', err.toString()));
-
-  py.on('close', () => {
-    res.json({ insights: result });
-  });
-});
