@@ -40,3 +40,30 @@ app.use(express.static('public'));
 app.listen(port, () => {
     console.log(`Server is running on port ${port}`);
 });
+
+
+const multer = require('multer');
+const { spawn } = require('child_process');
+const path = require('path');
+const upload = multer({ dest: 'uploads/' });
+
+// Serve automations.html (optional if you host it on GitHub Pages)
+app.get('/automations', (req, res) => {
+    res.sendFile(path.join(__dirname, 'public', 'automations.html'));
+});
+
+// Route to handle file analysis
+app.post('/api/analyze-data', upload.single('datafile'), (req, res) => {
+    const filePath = req.file.path;
+
+    const py = spawn('python3', ['analyze.py', filePath]);
+
+    let result = '';
+    py.stdout.on('data', (data) => result += data.toString());
+    py.stderr.on('data', (err) => console.error('Python error:', err.toString()));
+
+    py.on('close', () => {
+        const [insights, chartBase64] = result.split('---chart---');
+        res.json({ insights: insights.trim(), chart: chartBase64.trim() });
+    });
+});

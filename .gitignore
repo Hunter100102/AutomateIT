@@ -1,1 +1,30 @@
+# Node.js dependencies
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Local environment variables
 .env
+
+# Uploaded data or temp files
+uploads/
+*.csv
+*.xlsx
+
+# Python cache and runtime files
+__pycache__/
+*.pyc
+
+# Logs
+*.log
+
+# OS system files
+.DS_Store
+Thumbs.db
+
+# Optional for Heroku or Render builds
+.env.local
+.env.development
+.env.production
+.env.test

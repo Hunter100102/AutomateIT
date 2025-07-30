@@ -12,12 +12,10 @@ if file_path.endswith('.csv'):
 else:
     df = pd.read_excel(file_path)
 
-# Simple summary
 summary = df.describe(include='all').to_string()
 nulls = df.isnull().sum().to_string()
 insights = f"Summary:\n{summary}\n\nMissing Values:\n{nulls}"
 
-# Generate a plot (if numeric data exists)
 numeric_cols = df.select_dtypes(include=['number']).columns
 chart_base64 = ''
 if len(numeric_cols) >= 1:
