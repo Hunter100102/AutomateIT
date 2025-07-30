@@ -11,10 +11,12 @@ const port = process.env.PORT || 3000;
 app.use(bodyParser.json());
 
 // Enable CORS for all origins (replace * with your GitHub Pages URL if needed)
-const corsOptions = {
-  origin: ['https://automatingsolutions.com', 'https://hunter100102.github.io'],
-  optionsSuccessStatus: 200
-};
+app.use((req, res, next) => {
+  res.header("Access-Control-Allow-Origin", "https://automatingsolutions.com");
+  res.header("Access-Control-Allow-Headers", "Origin, X-Requested-With, Content-Type, Accept");
+  next();
+});
+
 
 app.use(cors(corsOptions));
 
