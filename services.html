@@ -1,206 +1,27 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"></script>
-    <script>
-      window.dataLayer = window.dataLayer || [];
-      function gtag() { dataLayer.push(arguments); }
-      gtag("js", new Date());
-      gtag("config", "G-ZJ9F6BZ2N2");
-    </script>
-
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="AutomateIT delivers scalable process automation and custom website development solutions tailored to your business needs." />
-    <meta name="keywords" content="custom automation, web development, CRM systems, QuickBase automation, website design" />
-    <title>Services | AutomateIT</title>
-    <link rel="canonical" href="https://automatingsolutions.com/services.html" />
-    <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" type="image/png" href="/my-favicon/favicon-96x96.png" sizes="96x96" />
-    <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
-    <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
-    <meta name="apple-mobile-web-app-title" content="AutomateIT" />
-    <link rel="manifest" href="/my-favicon/site.webmanifest" />
-
-    <style>
-      body {
-        font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-        background: url("images/security.png") no-repeat center center;
-        background-size: cover;
-        min-height: 100vh;
-        color: #333;
-      }
-
-      header {
-        background: rgba(0, 0, 0, 0.9);
-        color: #fff;
-        padding: 1rem 0;
-        text-align: center;
-        position: sticky;
-        top: 0;
-        z-index: 1000;
-        box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
-      }
-
-      nav ul {
-        list-style: none;
-        padding: 0;
-        margin: 0;
-        display: flex;
-        justify-content: center;
-        flex-wrap: wrap;
-      }
-
-      nav ul li {
-        margin: 0 15px;
-      }
-
-      nav ul li a {
-        color: #fff;
-        text-decoration: none;
-        font-weight: bold;
-        padding: 10px 15px;
-        border-radius: 5px;
-        transition: background 0.3s ease;
-      }
-
-      nav ul li a:hover {
-        background: #00aaff;
-      }
-
-      .services {
-        text-align: center;
-        padding: 60px 20px;
-        max-width: 1200px;
-        margin: 0 auto;
-      }
-
-      .services h1 {
-        font-size: 2.8rem;
-        color: #00aaff;
-        margin-bottom: 50px;
-      }
-
-      .services-grid {
-        display: grid;
-        grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-        gap: 40px;
-      }
-
-      .service-card {
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 6px 18px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-      }
-
-      .service-card:hover {
-        transform: translateY(-10px);
-        box-shadow: 0 10px 24px rgba(0, 0, 0, 0.2);
-      }
-
-      .service-card img {
-        width: 100%;
-        height: auto;
-        border-bottom: 2px solid #00aaff;
-      }
-
-      .service-card h2 {
-        font-size: 1.9rem;
-        color: #222;
-        margin: 20px 0 10px;
-        padding: 0 20px;
-      }
-
-      .service-card p {
-        font-size: 1.05rem;
-        line-height: 1.7;
-        padding: 0 20px 20px;
-        color: #555;
-      }
-
-      footer {
-        background: #000;
-        color: #fff;
-        text-align: center;
-        padding: 1rem;
-        margin-top: 40px;
-        font-size: 0.9rem;
-      }
-
-      @media (max-width: 768px) {
-        .service-card h2 {
-          font-size: 1.5rem;
-        }
-
-        .service-card p {
-          font-size: 0.95rem;
-        }
-
-        nav ul {
-          flex-direction: column;
-        }
-
-        nav ul li {
-          margin: 10px 0;
-        }
-      }
-    </style>
-  </head>
-  <body>
-    <header>
-      <nav>
-        <ul>
-          <li><a href="index.html">Home</a></li>
-          <li><a href="about.html">About</a></li>
-          <li><a href="services.html">Services</a></li>
-          <li><a href="blog.html">Blog</a></li>
-          <li><a href="contact.html">Contact</a></li>
-          <li><a href="portfolio.html">Client Portfolio</a></li>
-          <li><a href="automations.html" target="automation_demo" class="cta-button">Try Automation Demo</a></li>
-        </ul>
-      </nav>
-    </header>
-
-    <section class="services">
-      <h1>Our Services</h1>
-
-      <div class="services-grid">
-        <div class="service-card">
-          <img src="images/process-automation-1.jpg" alt="Process automation services" />
-          <h2>Process Automation</h2>
-          <p>Automate manual workflows with intelligent systems that integrate seamlessly into your operations. From QuickBase to fully custom business tools, we tailor automation solutions to increase efficiency and reduce human error.</p>
-          <p>Our automation services empower businesses to save time and improve decision-making with real-time data flow and fewer repetitive tasks. Whether you're automating internal tasks or customer-facing processes, we’ve got your back.</p>
-        </div>
-
-        <div class="service-card">
-          <img src="images/custom-websites.jpg" alt="Custom website development" />
-          <h2>Custom Websites</h2>
-          <p>Design, build, and scale your digital presence with fully custom websites. From branded landing pages to complex web applications and internal CRMs, we deliver fast, secure, and mobile-ready solutions aligned with your business goals.</p>
-          <p>Whether you're launching a startup or refreshing an outdated platform, we help you build a compelling online experience that supports your strategy, boosts visibility, and drives conversions.</p>
-        </div>
-      </div>
-    </section>
-
-    <footer>
-      <p>&copy; 2024 AutomateIT. All rights reserved.</p>
-    </footer>
-
-    <script type="application/ld+json">
-      {
-        "@context": "https://schema.org",
-        "@type": "LocalBusiness",
-        "name": "AutomateIT",
-        "description": "Custom software and website development services.",
-        "url": "https://automatingsolutions.com/services",
-        "telephone": "+16782627635"
-      }
-    </script>
-  </body>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content="Explore AutomateIT's services including workflow automation, CRM solutions, website development, and custom software for small businesses." />
+  <meta name="keywords" content="workflow automation, CRM development, website solutions, automation tools, Georgia small business software" />
+  <meta property="og:title" content="Services | AutomateIT" />
+  <meta property="og:description" content="From QuickBase automation to modern website design—AutomateIT has a solution for your business needs." />
+  <meta property="og:image" content="https://automatingsolutions.com/images/custom-websites.jpg" />
+  <meta property="og:url" content="https://automatingsolutions.com/services" />
+  <meta property="og:type" content="website" />
+  <link rel="canonical" href="https://automatingsolutions.com/services" />
+  <title>Services | AutomateIT</title>
+</head>
+<body>
+  <header><h1>Our Services</h1></header>
+  <main>
+    <ul>
+      <li><strong>Workflow Automation:</strong> Automate repetitive tasks and improve accuracy.</li>
+      <li><strong>Custom Website Design:</strong> Stand out with mobile-optimized and modern designs.</li>
+      <li><strong>CRM Systems:</strong> Manage customer relationships with tailor-made tools.</li>
+    </ul>
+  </main>
+  <footer><p>&copy; 2024 AutomateIT</p></footer>
+</body>
 </html>

@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<rss version="2.0">
+<channel>
+  <title>AutomateIT Blog</title>
+  <link>https://automatingsolutions.com/blog</link>
+  <description>Latest articles and insights from AutomateIT</description>
+  <language>en-us</language>
+  <item>
+    <title>Benefits of Automation for Your Business</title>
+    <link>https://automatingsolutions.com/blog#article1</link>
+    <description>Discover how automation boosts productivity and reduces costs.</description>
+    <pubDate>Tue, 30 Jul 2025 12:00:00 EST</pubDate>
+  </item>
+  <item>
+    <title>How a Professional Website Can Boost Your Business</title>
+    <link>https://automatingsolutions.com/blog#article2</link>
+    <description>Explore how web presence builds credibility and enhances customer experience.</description>
+    <pubDate>Tue, 30 Jul 2025 12:00:00 EST</pubDate>
+  </item>
+</channel>
+</rss>
