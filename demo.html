@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AI Excel Analyzer Demo | AutomateIT</title>
+  <meta name="description" content="Upload an Excel/CSV file to see instant AI-powered insights, charts, and a clean summary table." />
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    /* Scoped demo styles */
+    .ai-demo { max-width: 980px; margin: 48px auto; padding: 0 16px; }
+    .ai-demo h1 { font-size: clamp(1.8rem, 3vw, 2.4rem); margin: 0 0 12px; }
+    .ai-demo p.lead { color: #666; margin: 0 0 24px; }
+    .uibox { background: #111; color:#f9f9f9; border:1px solid #222; border-radius:14px; padding:18px; }
+    .uibox + .uibox { margin-top: 16px; }
+    .uibox h2 { margin: 0 0 10px; font-size: 1.1rem; }
+    .drop { border: 2px dashed #2b2b2b; border-radius: 12px; padding: 20px; text-align: center; background:#0c0c0c; }
+    .drop input { display: none; }
+    .drop label { display:inline-block; padding:10px 16px; border-radius:9px; background:#00aaff; color:#fff; cursor:pointer; font-weight:700; }
+    .small { font-size: .9rem; color: #aaa; margin-top:8px; }
+    .actions { display:flex; gap:10px; margin-top:12px; }
+    button, .btn { padding:10px 16px; border-radius:9px; border:1px solid #1e1e1e; background:#121212; color:#fff; font-weight:700; cursor:pointer; }
+    button.primary, .btn.primary { background:#00aaff; }
+    .results { display:grid; gap:16px; grid-template-columns:1fr; margin-top:16px; }
+    .codebox { white-space:pre-wrap; font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace; color:#eee; }
+    .chart img { max-width:100%; height:auto; display:block; border-radius:10px; border:1px solid #222; }
+    table.expense-table { width:100%; border-collapse: collapse; background:#0f0f0f; color:#fafafa; }
+    table.expense-table th, table.expense-table td { border:1px solid #222; padding:10px; }
+    .hidden { display:none; }
+    .error { color:#ff6b6b; }
+    .ok { color:#71e096; }
+  </style>
+</head>
+<body>
+  <main class="ai-demo">
+    <h1>AI Excel Analyzer</h1>
+    <p class="lead">Upload a simple expenses spreadsheet (.xlsx or .csv). We’ll auto‑detect your columns, calculate totals, and visualize top costs in seconds.</p>
+
+    <section class="uibox">
+      <h2>1) Upload your file</h2>
+      <div class="drop" id="drop">
+        <input id="file" type="file" accept=".xlsx,.xls,.csv" />
+        <label for="file">Choose file</label>
+        <div class="small">Accepted: .xlsx, .xls, .csv • Max ~10MB • We never store your data.</div>
+      </div>
+      <div class="actions">
+        <button class="primary" id="analyzeBtn" disabled>Analyze</button>
+        <button id="resetBtn" disabled>Reset</button>
+      </div>
+      <div id="status" class="small"></div>
+    </section>
+
+    <section id="output" class="results hidden">
+      <div class="uibox">
+        <h2>Insights</h2>
+        <div id="insights" class="codebox"></div>
+      </div>
+      <div class="uibox chart">
+        <h2>Top Expenses Chart</h2>
+        <img id="chart" alt="Top expenses bar chart" />
+      </div>
+      <div class="uibox">
+        <h2>Clean Table</h2>
+        <div id="tableWrap"></div>
+      </div>
+    </section>
+  </main>
+
+  <script>
+    const fileInput = document.getElementById('file');
+    const analyzeBtn = document.getElementById('analyzeBtn');
+    const resetBtn = document.getElementById('resetBtn');
+    const statusEl = document.getElementById('status');
+    const output = document.getElementById('output');
+    const insightsEl = document.getElementById('insights');
+    const chartImg = document.getElementById('chart');
+    const tableWrap = document.getElementById('tableWrap');
+
+    let chosenFile = null;
+
+    // Enable drag-and-drop (optional)
+    const drop = document.getElementById('drop');
+    ;['dragenter','dragover','dragleave','drop'].forEach(ev => {
+      drop.addEventListener(ev, e => { e.preventDefault(); e.stopPropagation(); }, false);
+    });
+    drop.addEventListener('drop', e => {
+      const f = e.dataTransfer.files?.[0];
+      if (f) handleSelected(f);
+    });
+
+    fileInput.addEventListener('change', e => {
+      const f = e.target.files?.[0];
+      if (f) handleSelected(f);
+    });
+
+    function handleSelected(f){
+      chosenFile = f;
+      statusEl.textContent = `Selected: ${f.name} (${Math.round(f.size/1024)} KB)`;
+      analyzeBtn.disabled = false;
+      resetBtn.disabled = false;
+      output.classList.add('hidden');
+    }
+
+    resetBtn.addEventListener('click', () => {
+      fileInput.value = '';
+      chosenFile = null;
+      analyzeBtn.disabled = true;
+      resetBtn.disabled = true;
+      statusEl.textContent = '';
+      output.classList.add('hidden');
+      insightsEl.textContent = '';
+      chartImg.removeAttribute('src');
+      tableWrap.innerHTML = '';
+    });
+
+    analyzeBtn.addEventListener('click', async () => {
+      if (!chosenFile) return;
+      analyzeBtn.disabled = true;
+      statusEl.textContent = 'Analyzing… this can take a few seconds on a cold server.';
+      statusEl.className = 'small';
+
+      const form = new FormData();
+      form.append('datafile', chosenFile);
+
+      try {
+        const res = await fetch('/api/analyze-data', {
+          method: 'POST',
+          body: form
+        });
+
+        if (!res.ok) {
+          const err = await res.json().catch(() => ({}));
+          throw new Error(err?.message || `Server error (${res.status})`);
+        }
+
+        const data = await res.json();
+        insightsEl.textContent = data.insights || '(no insights returned)';
+        chartImg.src = data.chart ? `data:image/png;base64,${data.chart}` : '';
+        tableWrap.innerHTML = data.table || '';
+        output.classList.remove('hidden');
+        statusEl.textContent = 'Done.';
+        statusEl.className = 'small ok';
+      } catch (e) {
+        statusEl.textContent = `Error: ${e.message}`;
+        statusEl.className = 'small error';
+        output.classList.add('hidden');
+      } finally {
+        analyzeBtn.disabled = false;
+      }
+    });
+  </script>
+</body>
+</html>
