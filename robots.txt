@@ -1,3 +1,5 @@
 User-agent: *
-Disallow:
-Sitemap: https://automatingsolutions.com/sitemap.xml
+Disallow: /private/
+Allow: /
+
+Sitemap: https://www.automatingsolutions.com/sitemap.xml
