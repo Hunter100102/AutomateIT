@@ -1,3 +1,4 @@
+// server.js
 const express = require('express');
 const bodyParser = require('body-parser');
 const multer = require('multer');
@@ -9,72 +10,94 @@ require('dotenv').config();
 const app = express();
 const port = process.env.PORT || 3000;
 
-// Middlewares
+// ---- Middleware
 app.use(bodyParser.json());
 app.use(cors({
   origin: ['https://automatingsolutions.com', 'https://hunter100102.github.io'],
   optionsSuccessStatus: 200
 }));
-app.use(express.static('public'));
 
-const upload = multer({ dest: 'uploads/' });
+// Static (optional if you serve assets)
+app.use(express.static(path.join(__dirname)));
 
-app.post('/send-email', (req, res) => {
-  const sgMail = require('@sendgrid/mail');
-  sgMail.setApiKey(process.env.SENDGRID_API_KEY);
-  const { name, email, message } = req.body;
+// Health check for Render
+app.get('/healthz', (_req, res) => res.status(200).send('ok'));
 
-  const msg = {
-    to: 'william@automatingsolutions.com',
-    from: 'spc.cody.hunter@gmail.com',
-    subject: 'New Contact Form Submission',
-    text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
-  };
-
-  sgMail.send(msg)
-    .then(() => res.status(200).json({ message: 'Email sent successfully' }))
-    .catch(error => {
-      console.error(error);
-      res.status(500).json({ message: 'Failed to send email' });
-    });
-});
-
-// Smart Analyzer Route
-app.post('/api/analyze-data', upload.single('datafile'), (req, res) => {
-  const filePath = req.file.path;
-  const py = spawn('python3', ['analyze.py', filePath]);
-
-  let result = '';
-  py.stdout.on('data', data => result += data.toString());
-  py.stderr.on('data', err => console.error('Python error:', err.toString()));
-
-py.on('close', (code) => {
+// ---- Email route (SendGrid)
+app.post('/api/send-email', async (req, res) => {
   try {
-    if (code !== 0) {
-      console.error('Python exited with code', code, result?.toString());
-      return res.status(500).json({ message: 'Python error', details: result?.toString() || '' });
+    const sgMail = require('@sendgrid/mail');
+    if (!process.env.SENDGRID_API_KEY) {
+      return res.status(500).json({ message: 'Missing SENDGRID_API_KEY' });
     }
+    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
-    if (!result || !result.includes('---chart---') || !result.includes('---table---')) {
-      console.error('Malformed Python output:', result?.toString());
-      return res.status(500).json({ message: 'Malformed analysis output' });
-    }
+    const { name, email, message } = req.body || {};
+    const msg = {
+      to: 'william@automateingsolutions.com', // change if needed
+      from: 'spc.cody.hunter@gmail.com',
+      subject: 'New Contact Form Submission',
+      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+    };
 
-    const [insightsPart, chartTablePart] = result.split('---chart---');
-    const [chartPart, tablePart] = chartTablePart.split('---table---');
-
-    return res.json({
-      insights: (insightsPart || '').trim(),
-      chart: (chartPart || '').trim(),
-      table: (tablePart || '').trim()
-    });
-  } catch (err) {
-    console.error('Parsing error:', err);
-    return res.status(500).json({ message: 'Failed to parse Python output' });
+    await sgMail.send(msg);
+    res.status(200).json({ message: 'Email sent successfully' });
+  } catch (error) {
+    console.error('SendGrid error:', error?.response?.body || error);
+    res.status(500).json({ message: 'Failed to send email' });
   }
 });
 
+// ---- Smart Analyzer route (xlsx -> Python)
+const upload = multer({ dest: 'uploads/' });
 
+app.post('/api/analyze-data', upload.single('datafile'), (req, res) => {
+  if (!req?.file?.path) {
+    return res.status(400).json({ message: 'No file uploaded' });
+  }
+
+  const filePath = req.file.path;
+  const py = spawn('python3', ['-u', 'analyze.py', filePath]);
+
+  let stdout = '';
+  let stderr = '';
+
+  py.stdout.on('data', (d) => { stdout += d.toString(); });
+  py.stderr.on('data', (e) => { stderr += e.toString(); });
+
+  py.on('close', (code) => {
+    try {
+      if (code !== 0) {
+        console.error('Python exited with code', code, stderr || '(no stderr)');
+        return res.status(500).json({ message: 'Python error', details: stderr || '' });
+      }
+
+      if (!stdout || !stdout.includes('---chart---') || !stdout.includes('---table---')) {
+        console.error('Malformed Python output:', stdout);
+        return res.status(500).json({ message: 'Malformed analysis output' });
+      }
+
+      const [insightsPart, chartTablePart] = stdout.split('---chart---');
+      const [chartPart, tablePart] = chartTablePart.split('---table---');
+
+      return res.json({
+        insights: (insightsPart || '').trim(),
+        chart: (chartPart || '').trim(),
+        table: (tablePart || '').trim()
+      });
+    } catch (err) {
+      console.error('Parsing error:', err);
+      return res.status(500).json({ message: 'Failed to parse Python output' });
+    }
+  });
+});
+
+// ---- Fallback route (optional)
+app.get('/', (_req, res) => {
+  res.sendFile(path.join(__dirname, 'index.html'));
+});
+
+// ---- Start server
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
 });
