@@ -48,22 +48,32 @@ app.post('/api/analyze-data', upload.single('datafile'), (req, res) => {
   py.stdout.on('data', data => result += data.toString());
   py.stderr.on('data', err => console.error('Python error:', err.toString()));
 
-  py.on('close', () => {
-    try {
-      const [insightsPart, chartTablePart] = result.split('---chart---');
-      const [chartPart, tablePart] = chartTablePart.split('---table---');
-
-      res.json({
-        insights: insightsPart.trim(),
-        chart: chartPart.trim(),
-        table: tablePart.trim()
-      });
-    } catch (err) {
-      console.error('Parsing error:', err);
-      res.status(500).json({ message: 'Failed to parse Python output' });
+py.on('close', (code) => {
+  try {
+    if (code !== 0) {
+      console.error('Python exited with code', code, result?.toString());
+      return res.status(500).json({ message: 'Python error', details: result?.toString() || '' });
     }
-  });
+
+    if (!result || !result.includes('---chart---') || !result.includes('---table---')) {
+      console.error('Malformed Python output:', result?.toString());
+      return res.status(500).json({ message: 'Malformed analysis output' });
+    }
+
+    const [insightsPart, chartTablePart] = result.split('---chart---');
+    const [chartPart, tablePart] = chartTablePart.split('---table---');
+
+    return res.json({
+      insights: (insightsPart || '').trim(),
+      chart: (chartPart || '').trim(),
+      table: (tablePart || '').trim()
+    });
+  } catch (err) {
+    console.error('Parsing error:', err);
+    return res.status(500).json({ message: 'Failed to parse Python output' });
+  }
 });
+
 
 app.listen(port, () => {
   console.log(`Server is running on port ${port}`);
