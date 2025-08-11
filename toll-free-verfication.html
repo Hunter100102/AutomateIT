@@ -1,0 +1,383 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Required Information for Toll-Free Verification • Help Center</title>
+<meta name="description" content="Everything you need to submit Toll-Free Verification: required data, examples of good vs. bad submissions, and opt-in types." />
+<style>
+  :root{
+    --bg:#0f0f10;        /* page background */
+    --panel:#1a1a1c;     /* cards/sidebar */
+    --ink:#f9f9f9;       /* text */
+    --muted:#bdbdbf;     /* secondary text */
+    --brand:#f9d342;     /* gold accent */
+    --brand-ink:#282828; /* dark gray for contrast on brand */
+    --line:#2a2a2d;      /* borders */
+    --link:#f9d342;
+    --link-hover:#ffe375;
+    --radius:16px;
+    --shadow:0 6px 24px rgba(0,0,0,.24);
+  }
+  *{box-sizing:border-box}
+  html,body{height:100%}
+  body{
+    margin:0;
+    font:16px/1.6 system-ui, -apple-system, Segoe UI, Roboto, Ubuntu, Cantarell, "Helvetica Neue", Arial, "Noto Sans", "Apple Color Emoji", "Segoe UI Emoji";
+    color:var(--ink);
+    background:linear-gradient(180deg, #111 0%, #0f0f10 100%);
+  }
+  a{color:var(--link); text-decoration:none}
+  a:hover{color:var(--link-hover)}
+  .skip-links{
+    position:absolute; left:-9999px; top:auto; width:1px; height:1px; overflow:hidden;
+  }
+  .skip-links:focus-within{position:static; width:auto; height:auto; padding:.5rem 1rem; background:#000; z-index:9999}
+  .skip-links a{margin-right:1rem}
+
+  /* Layout */
+  .topbar{
+    position:sticky; top:0; z-index:10;
+    backdrop-filter:saturate(140%) blur(6px);
+    background:rgba(26,26,28,.8);
+    border-bottom:1px solid var(--line);
+  }
+  .topbar-inner{
+    max-width:1200px; margin:0 auto; padding:.75rem 1rem;
+    display:flex; align-items:center; gap:1rem; justify-content:space-between;
+  }
+  .brand{
+    display:flex; align-items:center; gap:.75rem; font-weight:700;
+  }
+  .brand .logo{
+    width:36px; height:36px; border-radius:50%;
+    background: radial-gradient(120% 120% at 20% 0%, #fff6 0%, #0000 40%),
+                linear-gradient(135deg, var(--brand), #ffd766);
+    box-shadow: inset 0 0 0 2px #0003, 0 4px 16px #0008;
+  }
+  .brand span{letter-spacing:.2px}
+  .top-actions{display:flex; gap:.5rem; align-items:center; flex-wrap:wrap}
+  .chip, .btn{
+    border:1px solid var(--line);
+    color:var(--ink); background:var(--panel);
+    padding:.45rem .75rem; border-radius:999px; font-size:.9rem; display:inline-flex; gap:.5rem; align-items:center;
+  }
+  .btn.brand{background:var(--brand); color:var(--brand-ink); border-color:#0000; font-weight:700}
+  .btn.small{padding:.35rem .6rem; font-size:.85rem}
+  .wrap{max-width:1200px; margin:0 auto; padding:1rem; display:grid; grid-template-columns:260px 1fr; gap:1.25rem}
+  .sidebar{
+    position:sticky; top:64px; align-self:start; background:var(--panel); border:1px solid var(--line);
+    border-radius:var(--radius); padding:1rem; box-shadow:var(--shadow)
+  }
+  .sidebar h2{margin:.25rem 0 1rem 0; font-size:1rem; color:var(--muted); font-weight:600; text-transform:uppercase; letter-spacing:.08em}
+  .nav-group{margin-bottom:1rem}
+  .nav-group .label{font-size:.8rem; color:var(--muted); margin:.5rem 0; text-transform:uppercase; letter-spacing:.08em}
+  .nav{list-style:none; margin:0; padding:0}
+  .nav li{margin:.25rem 0}
+  .nav a{display:block; padding:.5rem .6rem; border-radius:10px; color:var(--ink)}
+  .nav a:hover{background:#ffffff12}
+  .nav a.active{background:#ffffff14; border:1px solid var(--line)}
+
+  .content{
+    background:var(--panel); border:1px solid var(--line); border-radius:var(--radius);
+    box-shadow:var(--shadow); padding:1.25rem
+  }
+  header.page{
+    display:flex; align-items:center; justify-content:space-between; gap:1rem; flex-wrap:wrap;
+    border-bottom:1px solid var(--line); padding-bottom:.75rem; margin-bottom:1rem
+  }
+  .breadcrumbs{font-size:.9rem; color:var(--muted)}
+  .breadcrumbs a{color:var(--muted)}
+  .title{display:flex; align-items:center; gap:.75rem}
+  h1{font-size:1.6rem; margin:.25rem 0}
+  .note{
+    background:#101013; border:1px dashed #3a3a3f; color:#eaeaea; padding:1rem; border-radius:12px; margin:1rem 0
+  }
+  .pill{display:inline-block; font-size:.8rem; padding:.25rem .55rem; border-radius:999px; background:#ffffff12; border:1px solid var(--line); color:var(--muted)}
+  .grid{display:grid; gap:1rem}
+  .grid.cols-2{grid-template-columns:1fr 1fr}
+  .card{
+    background:#121214; border:1px solid var(--line); border-radius:14px; padding:1rem
+  }
+  h2, h3{scroll-margin-top:88px}
+  h2{font-size:1.25rem; margin:1.2rem 0 .25rem}
+  h3{font-size:1.05rem; margin:1rem 0 .25rem}
+  .toc{background:#111113; border:1px solid var(--line); border-radius:14px; padding:1rem}
+  .toc ol{margin:.25rem 0 0 1.25rem}
+  code, .mono{font-family:ui-monospace, SFMono-Regular, Menlo, Consolas, "Liberation Mono", monospace}
+  .kbd{font:600 .78rem ui-monospace, SFMono-Regular, Menlo, Consolas; background:#000; border:1px solid var(--line); padding:.1rem .35rem; border-radius:6px}
+  .footer{margin-top:2rem; padding-top:1rem; border-top:1px solid var(--line); color:var(--muted); font-size:.9rem}
+  .callout{display:flex; gap:1rem; flex-wrap:wrap}
+  .callout .btn{box-shadow:var(--shadow)}
+  .tag{display:inline-flex; align-items:center; gap:.4rem; padding:.2rem .5rem; border-radius:999px; border:1px solid var(--line); background:#0e0e10; color:var(--muted); font-size:.78rem}
+  /* Responsive */
+  @media (max-width: 980px){
+    .wrap{grid-template-columns:1fr}
+    .sidebar{position:static; order:2}
+    .content{order:1}
+  }
+</style>
+</head>
+<body>
+  <!-- Skip links -->
+  <nav class="skip-links" aria-label="Skip links">
+    <a href="#main">Skip to content</a>
+    <a href="#nav">Skip to navigation</a>
+    <a href="#topbar">Skip to topbar</a>
+  </nav>
+
+  <!-- Topbar -->
+  <div id="topbar" class="topbar" role="banner">
+    <div class="topbar-inner">
+      <div class="brand" aria-label="Site">
+        <div class="logo" aria-hidden="true"></div>
+        <span><!-- Replace with your business name -->AutomateIT Help Center</span>
+        <span class="pill">Hookah Alerts</span>
+      </div>
+      <div class="top-actions" role="navigation" aria-label="Topbar actions">
+        <button class="btn small" type="button" aria-label="Open cookie preferences">Cookie Preferences</button>
+        <span class="tag" title="Status of connected services">System status • <span aria-hidden="true">●</span> Operational</span>
+        <a class="chip" href="#" title="View ticket history">Ticket history</a>
+        <a class="chip" href="#" title="View support plans">Support plans</a>
+        <a class="btn brand" href="#" title="Ask AI">Ask AI</a>
+      </div>
+    </div>
+  </div>
+
+  <div class="wrap">
+    <!-- Sidebar -->
+    <aside id="nav" class="sidebar" aria-label="Sidebar">
+      <h2>Navigation</h2>
+
+      <div class="nav-group">
+        <div class="label">Account</div>
+        <ul class="nav">
+          <li><a href="#" title="Change account">Change account</a></li>
+          <li><a href="#" title="Developer support">Developer Support</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="label">Products</div>
+        <ul class="nav">
+          <li><a href="#" title="Switch products">Switch products</a></li>
+          <li><a href="#" title="System status">System status</a></li>
+        </ul>
+      </div>
+
+      <div class="nav-group">
+        <div class="label">This article</div>
+        <ul class="nav">
+          <li><a class="active" href="#overview">Overview</a></li>
+          <li><a href="#what-you-need">What You Need To Know</a></li>
+          <li><a href="#required-data">Required Data & Examples</a></li>
+          <li><a href="#opt-in-images">Opt-In Image URLs</a></li>
+          <li><a href="#additional-info">Additional Information</a></li>
+        </ul>
+      </div>
+    </aside>
+
+    <!-- Main content -->
+    <main id="main" class="content">
+      <header class="page">
+        <div>
+          <nav class="breadcrumbs" aria-label="Breadcrumb">
+            <a href="#">Help Center</a> › <a href="#">Messaging Compliance</a> › Toll-Free
+          </nav>
+          <div class="title">
+            <span class="pill">Toll-Free</span>
+            <h1>Required Information for Toll-Free Verification</h1>
+          </div>
+          <p id="overview">
+            Toll-Free Verification requires specific data for review. This data identifies the end business sending messages and confirms proper compliance measures. Below you’ll find what’s required, with examples of strong vs. weak submissions.
+          </p>
+        </div>
+        <div class="callout" aria-label="Quick links">
+          <a class="btn" href="#" title="Open Messaging Compliance API docs">Messaging Compliance API</a>
+          <a class="btn" href="#" title="Open Console instructions">Console</a>
+        </div>
+      </header>
+
+      <section class="note" role="note" aria-label="Note">
+        <strong>Note:</strong> Refer to the documentation links above for a step-by-step on submitting verification requests via API or Console.
+      </section>
+
+      <section class="toc" aria-labelledby="toc-heading">
+        <h2 id="toc-heading">On this page</h2>
+        <ol>
+          <li><a href="#what-you-need">What You Need To Know</a></li>
+          <li><a href="#required-data">Required Data and Examples</a></li>
+          <li><a href="#opt-in">Opt-In Type</a></li>
+          <li><a href="#opt-in-images">Opt-In Image URLs</a></li>
+          <li><a href="#additional-info">Additional Information</a></li>
+        </ol>
+      </section>
+
+      <section id="what-you-need">
+        <h2>What You Need To Know</h2>
+        <p>The following sections expand on key request parameters from the API docs with plain-language guidance and examples.</p>
+      </section>
+
+      <section id="required-data">
+        <h2>Required Data and Examples</h2>
+
+        <article class="card" id="tfn-sid">
+          <h3>Toll-Free phone number SID 🔗</h3>
+          <p>This is Twilio’s phone number SID. If a phone number moves accounts, the SID changes and the existing toll-free verification no longer applies—you’ll need to re-verify.</p>
+        </article>
+
+        <article class="card" id="business-name">
+          <h3>Business Name 🔗</h3>
+          <p>The end business the customer is engaging with. This should not be the ISV unless:</p>
+          <ul>
+            <li>the ISV is the sole content creator,</li>
+            <li>messages are sent on behalf of the ISV, or</li>
+            <li>content is branded with the ISV’s name.</li>
+          </ul>
+          <p><strong>Approved:</strong> John’s Coffee Shop</p>
+          <p><strong>Rejected:</strong> Name of the ISV, N/A</p>
+        </article>
+
+        <article class="card" id="business-website">
+          <h3>Business Website 🔗</h3>
+          <p>Provide the website of the end business. If no traditional site, public social links are acceptable (Facebook, Instagram, etc.).</p>
+          <p><strong>Approved:</strong> Direct URL to end-business website or public social page.</p>
+          <p><strong>Rejected:</strong> Not live, behind login/password, or the ISV/aggregator’s site.</p>
+          <p>Note: URLs are critical for marketing use cases.</p>
+        </article>
+
+        <article class="card" id="business-address">
+          <h3>Business Address 🔗</h3>
+          <p>Provide the physical location of the end business.</p>
+          <p><strong>Approved:</strong> 123 Main St, Seattle, WA, 98119 (street, city, state, zip)</p>
+          <p><strong>Rejected:</strong> “N/A”, ISV’s address</p>
+        </article>
+
+        <article class="card" id="business-contact">
+          <h3>Business Contact 🔗</h3>
+          <p>Must reflect the end-user business interacting with the opted-in handset (not the ISV), except where the ISV is the sole content creator and manages opt-in.</p>
+          <p><em>Used only for verification; Twilio will not contact the end business.</em></p>
+          <p><strong>Approved (example):</strong></p>
+          <ul>
+            <li>First Name: Henry</li>
+            <li>Last Name: Saul</li>
+            <li>Email: hsaul@smokepiesbbq.com</li>
+            <li>Phone: +15555555555 (E.164)</li>
+          </ul>
+        </article>
+
+        <article class="card" id="notification-email">
+          <h3>Notification Email 🔗</h3>
+          <p>Email to receive verification results.</p>
+          <p><strong>Approved:</strong> notification@twilio.com</p>
+        </article>
+
+        <article class="card" id="message-volume">
+          <h3>Message Volume 🔗</h3>
+          <p>Estimated monthly messages on the toll-free number. Choose the closest value (or where you expect to be in ~6 months).</p>
+          <p><strong>Options:</strong> 10; 100; 1,000; 10,000; 100,000; 250,000; 500,000; 750,000; 1,000,000; 5,000,000; 10,000,000+</p>
+        </article>
+
+        <article class="card" id="use-case-category">
+          <h3>Use Case Category 🔗</h3>
+          <p>Select the category that best fits the traffic pattern for this number.</p>
+        </article>
+
+        <article class="card" id="use-case-summary">
+          <h3>Use Case Summary 🔗</h3>
+          <p>Explain how the business uses messaging on this toll-free number. More detail is better.</p>
+          <p><strong>Approved:</strong> “This number sends promotional offers and coupons to John’s Coffee Shop customers.”</p>
+          <p><strong>Rejected:</strong> “Marketing” (too vague; specify what recipients will receive).</p>
+        </article>
+
+        <article class="card" id="production-sample">
+          <h3>Production Message Sample 🔗</h3>
+          <p>Provide a real-world example of what recipients will receive.</p>
+          <p><strong>Approved:</strong> “Thank you for being a loyal customer of John’s Coffee Shop. Enjoy 10% off your next purchase. Reply STOP to opt out.”</p>
+          <p><strong>Rejected:</strong> “Your appointment is today at 10:00 AM” (doesn’t match a marketing use case).</p>
+        </article>
+      </section>
+
+      <section id="opt-in">
+        <h2>Opt-In Type 🔗</h2>
+        <p>Opt-in is required (TCPA “express written consent” for marketing). The selected <span class="mono">OptInType</span> must match what you demonstrate in your <span class="mono">OptInImageUrls</span>.</p>
+
+        <div class="grid cols-2">
+          <div class="card">
+            <h3>VERBAL</h3>
+            <p>Example IVR script capturing affirmative consent (with message frequency, rates, HELP/STOP, TOS/Privacy links). <strong>Must include script in your submission.</strong></p>
+          </div>
+          <div class="card">
+            <h3>WEB_FORM</h3>
+            <p>Embedded website form with an unchecked checkbox and clear consent language. <strong>Provide the public URL.</strong></p>
+          </div>
+          <div class="card">
+            <h3>PAPER_FORM</h3>
+            <p>Physical form collecting phone and consent. <strong>Provide a scan/photo.</strong></p>
+          </div>
+          <div class="card">
+            <h3>VIA_TEXT</h3>
+            <p>Keyword campaign (“Text COFFEE to …”). <strong>Describe keyword, where it’s advertised, and double opt-in flow.</strong></p>
+          </div>
+          <div class="card">
+            <h3>MOBILE_QR_CODE</h3>
+            <p>QR code to an opt-in form or prefilled message. <strong>Provide the QR in your document.</strong></p>
+          </div>
+        </div>
+      </section>
+
+      <section id="opt-in-images">
+        <h2>Opt-In Image URLs 🔗</h2>
+        <p>Show exactly how the handset provides consent. Use a public, reachable link to a page, screenshot, photo, or document that clearly demonstrates the opt-in method selected.</p>
+        <ul>
+          <li><strong>VERBAL:</strong> Include the sample script and flow in a document.</li>
+          <li><strong>WEB_FORM:</strong> Link directly to the phone/SMS opt-in page or include a screenshot. Email-only opt-in is not acceptable.</li>
+          <li><strong>PAPER_FORM:</strong> Include a scan/photo of the signed form.</li>
+          <li><strong>VIA_TEXT:</strong> Document the keyword, where it’s seen, and what happens after texting it (screenshots/URLs help).</li>
+          <li><strong>MOBILE_QR_CODE:</strong> Include a document with the QR code.</li>
+        </ul>
+        <p><strong>Approved examples:</strong></p>
+        <ul>
+          <li>Direct signup URL (e.g., <span class="mono">https://example.com/signup-sms</span>)</li>
+          <li>Public image of the opt-in (e.g., <span class="mono">https://example.com/optin.png</span>)</li>
+          <li>Public document describing the opt-in (e.g., <span class="mono">https://example.com/optin.pdf</span>)</li>
+          <li>“Keyword: Coffee … reply Y to confirm” with where the keyword appears.</li>
+        </ul>
+        <p><strong>Rejected examples:</strong> Homepage URLs that don’t show the opt-in, links behind logins, or vague documents that don’t show where/how consent is given.</p>
+      </section>
+
+      <section id="additional-info">
+        <h2>Additional Information 🔗</h2>
+        <p>Include anything else that helps reviewers (privacy policy, AUP, onboarding controls, or justification if using multiple numbers for the same business).</p>
+        <p><strong>Example:</strong> <span class="mono">https://example.com/privacypolicy</span></p>
+      </section>
+
+      <section class="footer" aria-label="Support">
+        <p>Still can’t find what you need?</p>
+        <p>
+          <a class="btn brand" href="#" title="Open chat assistant">Chat with our Help Center Assistant</a>
+          <a class="btn" href="#" title="Give feedback on this article">Give Feedback</a>
+        </p>
+      </section>
+    </main>
+  </div>
+
+  <!-- (Optional) Small enhancement: keep active link in sidebar as you scroll -->
+  <script>
+    const headings = [...document.querySelectorAll('main h2, main h3')].filter(h=>h.id);
+    const links = [...document.querySelectorAll('.sidebar .nav a')];
+    const byId = Object.fromEntries(links.map(a=>[a.getAttribute('href').slice(1), a]));
+    const obs = new IntersectionObserver(entries=>{
+      entries.forEach(e=>{
+        const id = e.target.id;
+        if(!id || !byId[id]) return;
+        if(e.isIntersecting){
+          links.forEach(l=>l.classList.remove('active'));
+          byId[id].classList.add('active');
+        }
+      });
+    }, {rootMargin:'-40% 0px -50% 0px', threshold: [0,1]});
+    headings.forEach(h=>obs.observe(h));
+  </script>
+</body>
+</html>
