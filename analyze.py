@@ -317,3 +317,28 @@ print('---chart---')
 print(chart_b64)
 print('---table---')
 print(table_html)
+
+HTML_TEMPLATE = """
+<!doctype html>
+<html>
+<head>
+  <title>Data Analyzer</title>
+  <link rel="icon" href="/favicon.ico" type="image/x-icon">
+</head>
+<body>
+  <h2>Upload a .xlsx file with Part Numbers -- In this case a properly formatted part number will be output</h2>
+  <form method="post" enctype="multipart/form-data">
+    <input type="file" name="file">
+    <input type="submit" value="Upload">
+  </form>
+  {% if processed %}
+    <h3>Formatted Part Numbers (no spaces):</h3>
+    <textarea rows="20" cols="80">{{ processed }}</textarea>
+  {% endif %}
+  <footer style="margin-top:40px; font-size:0.9em; color:#666;">
+    <hr>
+    <p style="text-align:center;">Powered by AutomateIT</p>
+  </footer>
+</body>
+</html>
+"""
