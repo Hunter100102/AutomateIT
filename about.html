@@ -2,7 +2,10 @@
 <html lang="en">
   <head>
     <!-- Google Analytics -->
-    <script async src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"></script>
+    <script
+      async
+      src="https://www.googletagmanager.com/gtag/js?id=G-ZJ9F6BZ2N2"
+    ></script>
     <script>
       window.dataLayer = window.dataLayer || [];
       function gtag() {
@@ -14,16 +17,31 @@
 
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <meta name="description" content="Learn about AutomateIT: our mission, our team, and how we help businesses thrive through custom automation solutions." />
-    <meta name="keywords" content="automation, business solutions, custom software, IT team, business mission" />
+    <meta
+      name="description"
+      content="Learn about AutomateIT: our mission, our team, and how we help businesses thrive through custom automation solutions."
+    />
+    <meta
+      name="keywords"
+      content="automation, business solutions, custom software, IT team, business mission"
+    />
     <title>About Us | AutomateIT</title>
     <link rel="canonical" href="https://automatingsolutions.com/about" />
 
     <link rel="stylesheet" href="styles.css" />
-    <link rel="icon" type="image/png" href="/my-favicon/favicon-96x96.png" sizes="96x96" />
+    <link
+      rel="icon"
+      type="image/png"
+      href="/my-favicon/favicon-96x96.png"
+      sizes="96x96"
+    />
     <link rel="icon" type="image/svg+xml" href="/my-favicon/favicon.svg" />
     <link rel="shortcut icon" href="/my-favicon/favicon.ico" />
-    <link rel="apple-touch-icon" sizes="180x180" href="/my-favicon/apple-touch-icon.png" />
+    <link
+      rel="apple-touch-icon"
+      sizes="180x180"
+      href="/my-favicon/apple-touch-icon.png"
+    />
     <meta name="apple-mobile-web-app-title" content="AutomateIT" />
     <link rel="manifest" href="/my-favicon/site.webmanifest" />
 
@@ -75,7 +93,8 @@
       }
 
       .hero {
-        background: url("images/about-us-background.jpg") no-repeat center center/cover;
+        background: url("images/about-us-background.jpg") no-repeat center
+          center/cover;
         padding: 100px 20px;
         text-align: center;
         color: #fff;
@@ -183,6 +202,42 @@
           max-width: 100px;
         }
       }
+
+      /* Dropdown Styling */
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #1a1a1a;
+        border-radius: 8px;
+        z-index: 1000;
+        padding: 0;
+        list-style: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        min-width: 160px;
+      }
+
+      .dropdown-content li a {
+        color: #fff;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+      }
+
+      .dropdown-content li a:hover {
+        background-color: #ff6347;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
     </style>
   </head>
   <body>
@@ -195,8 +250,27 @@
           <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="portfolio.html">Client Portfolio</a></li>
-          <li><a href="automations.html" target="automation_demo" class="cta-button">Try Automation Demo</a></li>
-          <li><a href="https://number-formatter.onrender.com" target="formatting_demo" class="cta-button">Formatting Demo</a></li>
+          <li class="dropdown">
+            <a href="#">About</a>
+            <ul class="dropdown-content">
+              <li>
+                <a
+                  href="automations.html"
+                  target="automation_demo"
+                  class="cta-button"
+                  >Try Automation Demo</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://number-formatter.onrender.com"
+                  target="formatting_demo"
+                  class="cta-button"
+                  >Formatting Demo</a
+                >
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>
@@ -209,16 +283,37 @@
     <section class="content">
       <div class="content-section">
         <h2>Our Mission</h2>
-        <p>AutomateIT transforms businesses with intelligent automation solutions that optimize workflows and maximize performance.</p>
-        <p>We deliver cutting-edge tools tailored to each client’s unique needs, helping businesses stay agile, reduce inefficiencies, and scale effortlessly.</p>
-        <p>By focusing on innovation, reliability, and client satisfaction, we create solutions that evolve with our partners for long-term success.</p>
+        <p>
+          AutomateIT transforms businesses with intelligent automation solutions
+          that optimize workflows and maximize performance.
+        </p>
+        <p>
+          We deliver cutting-edge tools tailored to each client’s unique needs,
+          helping businesses stay agile, reduce inefficiencies, and scale
+          effortlessly.
+        </p>
+        <p>
+          By focusing on innovation, reliability, and client satisfaction, we
+          create solutions that evolve with our partners for long-term success.
+        </p>
       </div>
 
       <div class="content-section">
         <h2>Our Team</h2>
-        <p>We are a collective of passionate developers, engineers, and business experts united by a shared goal: to revolutionize how businesses operate.</p>
-        <p>Our cross-functional team brings both technical mastery and strategic insight, enabling us to craft meaningful, measurable results for every project.</p>
-        <p>From ideation to implementation, our collaborative approach ensures seamless integration, lasting impact, and genuine client satisfaction.</p>
+        <p>
+          We are a collective of passionate developers, engineers, and business
+          experts united by a shared goal: to revolutionize how businesses
+          operate.
+        </p>
+        <p>
+          Our cross-functional team brings both technical mastery and strategic
+          insight, enabling us to craft meaningful, measurable results for every
+          project.
+        </p>
+        <p>
+          From ideation to implementation, our collaborative approach ensures
+          seamless integration, lasting impact, and genuine client satisfaction.
+        </p>
       </div>
     </section>
 
