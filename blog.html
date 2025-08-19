@@ -189,6 +189,42 @@
           margin: 10px 0;
         }
       }
+
+            /* Dropdown Styling */
+      .dropdown {
+        position: relative;
+      }
+
+      .dropdown-content {
+        display: none;
+        position: absolute;
+        top: 100%;
+        left: 0;
+        background-color: #1a1a1a;
+        border-radius: 8px;
+        z-index: 1000;
+        padding: 0;
+        list-style: none;
+        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.6);
+        min-width: 160px;
+      }
+
+      .dropdown-content li a {
+        color: #fff;
+        padding: 12px 20px;
+        text-decoration: none;
+        display: block;
+        font-size: 14px;
+        transition: background-color 0.3s ease;
+      }
+
+      .dropdown-content li a:hover {
+        background-color: #ff6347;
+      }
+
+      .dropdown:hover .dropdown-content {
+        display: block;
+      }
     </style>
   
   <noscript></noscript>
@@ -225,7 +261,35 @@ footer{background:#000;color:#fff;text-align:center;padding:1rem;font-size:.9rem
           <li><a href="blog.html">Blog</a></li>
           <li><a href="contact.html">Contact</a></li>
           <li><a href="portfolio.html">Client Portfolio</a></li>
-          <li><a href="automations.html" target="automation_demo" class="cta-button">Try Automation Demo</a></li>
+                    <li class="dropdown">
+            <a href="#">Automation Examples</a>
+            <ul class="dropdown-content">
+              <li>
+                <a
+                  href="automations.html"
+                  target="automation_demo"
+                  class="cta-button"
+                  >Try Automation Demo</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://number-formatter.onrender.com"
+                  target="formatting_demo"
+                  class="cta-button"
+                  >Formatting Demo</a
+                >
+              </li>
+              <li>
+                <a
+                  href="https://work-assistant-iq1k.onrender.com"
+                  target="work_assistant_demo"
+                  class="cta-button"
+                  >Work Assistant Demo</a
+                >
+              </li>
+            </ul>
+          </li>
         </ul>
       </nav>
     </header>
