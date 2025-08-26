@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>AutomateIT — Google Reviews</title>
+  <style>
+    :root{
+      --bg:#1a1a1a; --card:#222; --text:#f9f9f9; --muted:#cfcfcf;
+      --accent:#f9d342; --shadow:0 6px 20px rgba(0,0,0,.25);
+    }
+    body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
+    .wrap{max-width:1100px;margin:0 auto;padding:24px}
+    header{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
+    .brand{font-size:clamp(20px,3vw,28px);font-weight:700;letter-spacing:.3px}
+    .rating-line{display:flex;align-items:center;gap:10px;color:var(--muted)}
+    .star{font-size:18px;color:var(--accent)}
+    .cards{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:18px;margin-top:20px}
+    .card{background:var(--card);border-radius:14px;box-shadow:var(--shadow);padding:18px;display:flex;flex-direction:column;gap:10px}
+    .author{font-weight:600}
+    .meta{font-size:13px;color:var(--muted)}
+    .text{line-height:1.5}
+    .controls{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px}
+    button{background:#2b2b2b;border:1px solid #333;color:var(--text);padding:10px 14px;border-radius:10px;cursor:pointer}
+    button:hover{background:#303030}
+    .chip{background:#2b2b2b;border:1px solid #333;padding:8px 12px;border-radius:999px;font-size:14px}
+    .warning{border-left:3px solid var(--accent);padding:10px 12px;background:#262626;margin-top:12px}
+  </style>
+</head>
+<body>
+  <div class="wrap">
+    <header>
+      <div class="brand">AutomateIT — Customer Reviews</div>
+      <div class="rating-line">
+        <span id="avg" class="chip">Average: —</span>
+        <span id="total" class="chip">Reviews: —</span>
+      </div>
+    </header>
+
+    <div class="controls">
+      <button id="sort-newest">Newest</button>
+      <button id="sort-highest">Highest Rated</button>
+      <button id="sort-lowest">Lowest Rated</button>
+    </div>
+
+    <div id="cards" class="cards" role="region" aria-live="polite"></div>
+
+    <div class="warning" id="api-note" style="display:none">
+      Google’s official API typically returns up to 5 reviews from Place Details. That’s normal.
+    </div>
+  </div>
+
+  <!-- Inline module script so Vite can inject env at build time -->
+  <script type="module">
+    // Pull from Vite env (defined in your local .env)
+    const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
+    const PLACE_ID = import.meta.env.VITE_PLACE_ID;
+
+    if (!GOOGLE_API_KEY || !PLACE_ID) {
+      document.getElementById("cards").innerHTML =
+        `<div class="warning">Missing VITE_GOOGLE_API_KEY or VITE_PLACE_ID. Create a .env and rebuild.</div>`;
+      throw new Error("Missing env vars");
+    }
+
+    // Dynamically load Maps JS + Places Library
+    function loadGoogle() {
+      return new Promise((resolve, reject) => {
+        const s = document.createElement("script");
+        s.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(GOOGLE_API_KEY)}&libraries=places&callback=__initReviews`;
+        s.async = true; s.defer = true;
+        window.__initReviews = () => resolve();
+        s.onerror = reject;
+        document.head.appendChild(s);
+      });
+    }
+
+    let originalReviews = [];
+
+    function renderError(msg) {
+      document.getElementById("cards").innerHTML = `<div class="warning">${escapeHTML(msg)}</div>`;
+    }
+
+    function escapeHTML(str){
+      return String(str ?? "").replace(/[&<>"']/g, m => ({
+        "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
+      }[m]));
+    }
+
+    function renderCards(reviews){
+      const container = document.getElementById("cards");
+      container.innerHTML = "";
+      if (!reviews || !reviews.length){
+        container.innerHTML = `<div class="warning">No reviews returned by Google.</div>`;
+        return;
+      }
+      for (const r of reviews){
+        const card = document.createElement("div");
+        card.className = "card";
+        card.innerHTML = `
+          <div class="author">${escapeHTML(r.author_name || "Anonymous")}</div>
+          <div class="meta"><span class="star">★</span> ${r.rating ?? "—"} · ${escapeHTML(r.relative_time_description || "")}</div>
+          <div class="text">${escapeHTML(r.text || "")}</div>
+        `;
+        container.appendChild(card);
+      }
+    }
+
+    function hookSortButtons(){
+      document.getElementById("sort-newest").onclick = () => {
+        const sorted = [...originalReviews].sort((a,b)=>b.time-a.time);
+        renderCards(sorted);
+      };
+      document.getElementById("sort-highest").onclick = () => {
+        const sorted = [...originalReviews].sort((a,b)=>b.rating-a.rating);
+        renderCards(sorted);
+      };
+      document.getElementById("sort-lowest").onclick = () => {
+        const sorted = [...originalReviews].sort((a,b)=>a.rating-b.rating);
+        renderCards(sorted);
+      };
+    }
+
+    async function init(){
+      try {
+        await loadGoogle();
+        const service = new google.maps.places.PlacesService(document.createElement('div'));
+        service.getDetails(
+          { placeId: PLACE_ID, fields: ["name","rating","user_ratings_total","reviews"] },
+          (place, status) => {
+            if (status !== google.maps.places.PlacesServiceStatus.OK || !place) {
+              renderError("Could not load reviews. Check API enablement, referrer restrictions, and Place ID.");
+              return;
+            }
+            document.getElementById("avg").textContent = `Average: ${place.rating ?? "—"}`;
+            document.getElementById("total").textContent = `Reviews: ${place.user_ratings_total ?? "—"}`;
+            originalReviews = (place.reviews || []).map(r => ({
+              author_name: r.author_name,
+              profile_photo_url: r.profile_photo_url,
+              rating: r.rating,
+              relative_time_description: r.relative_time_description,
+              text: r.text || "",
+              time: r.time // unix seconds
+            }));
+            document.getElementById("api-note").style.display = "block";
+            renderCards(originalReviews);
+            hookSortButtons();
+          }
+        );
+      } catch (e) {
+        renderError("Failed to load Google Maps JS. Verify your restricted key + allowed referrers.");
+        console.error(e);
+      }
+    }
+
+    init();
+  </script>
+</body>
+</html>
