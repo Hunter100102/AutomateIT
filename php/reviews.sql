@@ -1,10 +1,1 @@
-
--- php/reviews.sql — basic schema
-CREATE TABLE IF NOT EXISTS reviews (
-  id INT AUTO_INCREMENT PRIMARY KEY,
-  name VARCHAR(120) NOT NULL,
-  stars TINYINT NOT NULL CHECK (stars BETWEEN 1 AND 5),
-  content TEXT NOT NULL,
-  status ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending',
-  created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+CREATE TABLE IF NOT EXISTS reviews (id INT AUTO_INCREMENT PRIMARY KEY,name VARCHAR(120) NOT NULL,stars TINYINT NOT NULL,content TEXT NOT NULL,status ENUM('pending','approved','rejected') NOT NULL DEFAULT 'pending',created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;

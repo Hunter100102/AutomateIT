@@ -1,0 +1,1 @@
+<?php include __DIR__.'/includes/header.php'; ?><section class='section container'><h1>Portfolio</h1></section><?php include __DIR__.'/includes/footer.php'; ?>
