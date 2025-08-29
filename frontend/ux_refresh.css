@@ -1,0 +1,24 @@
+
+/* ux_refresh.css — gentle polish without changing your images */
+:root {
+  --brand: #111;         /* tweak if needed */
+  --accent: #f9d342;     /* your gold accent works great for CTA highlights */
+  --text: #1a1a1a;
+  --muted: #6b7280;
+  --bg-soft: #fafafa;
+}
+body { color: var(--text); }
+.hero { display:grid; place-items:center; min-height: 58vh; background: var(--bg-soft); text-align:center; padding: clamp(2rem, 4vw, 4rem) 1rem; }
+.hero h1 { font-size: clamp(1.8rem, 4.5vw, 3rem); line-height:1.15; letter-spacing: .3px; }
+.hero p.lead { font-size: clamp(1rem, 2.1vw, 1.25rem); color: var(--muted); max-width: 70ch; margin: 0.75rem auto 1.5rem; }
+.cta-row { display:flex; flex-wrap:wrap; gap:.75rem; justify-content:center; }
+.btn, .btn-outline { padding:.8rem 1.1rem; border-radius:999px; border:1.5px solid transparent; text-decoration:none; font-weight:700; }
+.btn { background: var(--brand); color:#fff; }
+.btn-outline { border-color: var(--brand); color: var(--brand); background:#fff; }
+.btn:hover, .btn-outline:hover { transform: translateY(-1px); }
+.trustbar { display:flex; flex-wrap:wrap; gap:1rem; justify-content:center; align-items:center; padding: 1rem; opacity:.8; }
+.section { padding: clamp(2rem, 5vw, 4rem) 1rem; }
+.grid-3 { display:grid; grid-template-columns: repeat(auto-fit,minmax(220px,1fr)); gap:1rem; }
+.feature { border: 1px solid rgba(0,0,0,.06); border-radius: 16px; padding: 1rem; background:#fff; box-shadow: 0 1px 10px rgba(0,0,0,.03); }
+.kpi { font-size: 2rem; font-weight:800; }
+footer.cta { background:#111; color:#fff; text-align:center; padding: 2rem 1rem; }

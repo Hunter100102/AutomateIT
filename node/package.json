@@ -1,0 +1,7 @@
+{
+  "name": "reviews-router",
+  "version": "1.0.0",
+  "main": "reviews_router.js",
+  "license": "MIT",
+  "dependencies": {}
+}

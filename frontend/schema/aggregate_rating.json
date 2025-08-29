@@ -1,0 +1,10 @@
+{
+  "@context": "https://schema.org",
+  "@type": "Product",
+  "name": "AutomateIT Services",
+  "aggregateRating": {
+    "@type": "AggregateRating",
+    "ratingValue": "4.9",
+    "reviewCount": "37"
+  }
+}

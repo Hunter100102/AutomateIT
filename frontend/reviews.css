@@ -1,0 +1,22 @@
+
+/* reviews.css — basic styles for the review widget */
+#reviews-widget { max-width: 900px; margin: 2rem auto; }
+.reviews-header { display: flex; justify-content: space-between; align-items: center; gap: 1rem; }
+.reviews-title { font-size: 1.5rem; font-weight: 700; letter-spacing: .3px; }
+.reviews-cta { display: inline-flex; align-items: center; gap: .5rem; padding: .6rem 1rem; border-radius: 999px; border: 1px solid rgba(0,0,0,.1); cursor: pointer; text-decoration: none; }
+.reviews-cta:hover { transform: translateY(-1px); }
+.stars { display: inline-flex; gap: 2px; font-size: 1.1rem; }
+.review-card { border: 1px solid rgba(0,0,0,.08); border-radius: 16px; padding: 1rem 1.1rem; margin: 1rem 0; box-shadow: 0 1px 12px rgba(0,0,0,.03); }
+.review-meta { display: flex; justify-content: space-between; align-items: center; font-size: .9rem; opacity: .8; margin-bottom: .5rem; }
+.review-content { line-height: 1.55; }
+.pill { font-size: .75rem; padding: .2rem .6rem; border-radius: 999px; background: #f5f5f7; }
+.form-wrap { margin-top: 1.25rem; border-top: 1px dashed rgba(0,0,0,.1); padding-top: 1rem; }
+.input, textarea { width: 100%; padding: .7rem .8rem; border: 1px solid rgba(0,0,0,.12); border-radius: 12px; }
+label { font-size: .9rem; font-weight: 600; margin-top: .75rem; display:block; }
+.submit { margin-top: .9rem; padding: .7rem 1rem; border-radius: 10px; border: none; background: #111; color: #fff; cursor: pointer; }
+.submit:hover { opacity: .92; }
+.pagination { display: flex; gap: .5rem; justify-content: center; margin-top: 1rem; }
+.page-btn { padding: .5rem .75rem; border: 1px solid rgba(0,0,0,.1); border-radius: 8px; cursor: pointer; background: #fff; }
+.page-btn[disabled] { opacity: .5; cursor: not-allowed; }
+.badge-pending { background: #fff8e1; color: #9a6200; }
+.badge-approved { background: #e7f8ef; color: #126a3a; }
