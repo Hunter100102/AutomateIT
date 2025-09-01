@@ -1,5 +1,5 @@
 // assets/js/api.js
-const API_BASE_URL = window.API_BASE_URL || "https://RENDER-BACKEND-URL";
+const API_BASE_URL = window.API_BASE_URL || "https://automateit.onrender.com";
 
 async function apiGet(path) {
   const res = await fetch(`${API_BASE_URL}${path}`, { credentials: "omit" });
