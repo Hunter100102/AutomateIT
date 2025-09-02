@@ -1,4 +1,7 @@
-<!DOCTYPE html>
+<?php
+$GOOGLE_API_KEY = getenv('GOOGLE_API_KEY') ?: '';
+$PLACE_ID = getenv('PLACE_ID') ?: '';
+?><!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8" />
@@ -9,6 +12,7 @@
       --bg:#1a1a1a; --card:#222; --text:#f9f9f9; --muted:#cfcfcf;
       --accent:#f9d342; --shadow:0 6px 20px rgba(0,0,0,.25);
     }
+    *{box-sizing:border-box}
     body{margin:0;background:var(--bg);color:var(--text);font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif}
     .wrap{max-width:1100px;margin:0 auto;padding:24px}
     header{display:flex;align-items:center;gap:16px;flex-wrap:wrap}
@@ -50,42 +54,36 @@
     </div>
   </div>
 
-  <!-- Inline module script so Vite can inject env at build time -->
-  <script type="module">
-    // Pull from Vite env (defined in your local .env)
-    const GOOGLE_API_KEY = import.meta.env.VITE_GOOGLE_API_KEY;
-    const PLACE_ID = import.meta.env.VITE_PLACE_ID;
-
-    if (!GOOGLE_API_KEY || !PLACE_ID) {
-      document.getElementById("cards").innerHTML =
-        `<div class="warning">Missing VITE_GOOGLE_API_KEY or VITE_PLACE_ID. Create a .env and rebuild.</div>`;
-      throw new Error("Missing env vars");
-    }
-
-    // Dynamically load Maps JS + Places Library
-    function loadGoogle() {
-      return new Promise((resolve, reject) => {
-        const s = document.createElement("script");
-        s.src = `https://maps.googleapis.com/maps/api/js?key=${encodeURIComponent(GOOGLE_API_KEY)}&libraries=places&callback=__initReviews`;
+  <?php if (!$GOOGLE_API_KEY || !$PLACE_ID): ?>
+    <div class="wrap">
+      <div class="warning">Missing <code>GOOGLE_API_KEY</code> or <code>PLACE_ID</code> on the server. Set them in Render → Environment.</div>
+    </div>
+  <?php else: ?>
+    <script>
+      window.GOOGLE_API_KEY = <?php echo json_encode($GOOGLE_API_KEY); ?>;
+      window.PLACE_ID = <?php echo json_encode($PLACE_ID); ?>;
+      (function(){
+        const s = document.createElement('script');
+        s.src = "https://maps.googleapis.com/maps/api/js?key=" + encodeURIComponent(window.GOOGLE_API_KEY) + "&libraries=places&callback=__initReviews";
         s.async = true; s.defer = true;
-        window.__initReviews = () => resolve();
-        s.onerror = reject;
+        window.__initReviews = function(){ window.initReviewsPage(window.PLACE_ID); };
+        s.onerror = function(){ console.error("Failed to load Google Maps JS"); };
         document.head.appendChild(s);
-      });
-    }
+      })();
+    </script>
+  <?php endif; ?>
 
-    let originalReviews = [];
-
-    function renderError(msg) {
-      document.getElementById("cards").innerHTML = `<div class="warning">${escapeHTML(msg)}</div>`;
-    }
-
+  <script>
+  (function(){
     function escapeHTML(str){
       return String(str ?? "").replace(/[&<>"']/g, m => ({
         "&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"
       }[m]));
     }
-
+    function renderError(msg) {
+      const el = document.getElementById("cards");
+      if (el) el.innerHTML = `<div class="warning">${escapeHTML(msg)}</div>`;
+    }
     function renderCards(reviews){
       const container = document.getElementById("cards");
       container.innerHTML = "";
@@ -104,28 +102,25 @@
         container.appendChild(card);
       }
     }
-
-    function hookSortButtons(){
-      document.getElementById("sort-newest").onclick = () => {
+    function hookSortButtons(originalReviews){
+      document.getElementById("sort-newest")?.addEventListener("click", () => {
         const sorted = [...originalReviews].sort((a,b)=>b.time-a.time);
         renderCards(sorted);
-      };
-      document.getElementById("sort-highest").onclick = () => {
+      });
+      document.getElementById("sort-highest")?.addEventListener("click", () => {
         const sorted = [...originalReviews].sort((a,b)=>b.rating-a.rating);
         renderCards(sorted);
-      };
-      document.getElementById("sort-lowest").onclick = () => {
+      });
+      document.getElementById("sort-lowest")?.addEventListener("click", () => {
         const sorted = [...originalReviews].sort((a,b)=>a.rating-b.rating);
         renderCards(sorted);
-      };
+      });
     }
-
-    async function init(){
+    window.initReviewsPage = function initReviewsPage(placeId){
       try {
-        await loadGoogle();
         const service = new google.maps.places.PlacesService(document.createElement('div'));
         service.getDetails(
-          { placeId: PLACE_ID, fields: ["name","rating","user_ratings_total","reviews"] },
+          { placeId, fields: ["name","rating","user_ratings_total","reviews"] },
           (place, status) => {
             if (status !== google.maps.places.PlacesServiceStatus.OK || !place) {
               renderError("Could not load reviews. Check API enablement, referrer restrictions, and Place ID.");
@@ -133,28 +128,25 @@
             }
             document.getElementById("avg").textContent = `Average: ${place.rating ?? "—"}`;
             document.getElementById("total").textContent = `Reviews: ${place.user_ratings_total ?? "—"}`;
-            originalReviews = (place.reviews || []).map(r => ({
+            const originalReviews = (place.reviews || []).map(r => ({
               author_name: r.author_name,
               profile_photo_url: r.profile_photo_url,
               rating: r.rating,
               relative_time_description: r.relative_time_description,
               text: r.text || "",
-              time: r.time // unix seconds
+              time: r.time
             }));
             document.getElementById("api-note").style.display = "block";
             renderCards(originalReviews);
-            hookSortButtons();
+            hookSortButtons(originalReviews);
           }
         );
       } catch (e) {
-        renderError("Failed to load Google Maps JS. Verify your restricted key + allowed referrers.");
         console.error(e);
+        renderError("Failed to load Google Maps JS. Verify your restricted key + allowed referrers.");
       }
-    }
-
-    init();
+    };
+  })();
   </script>
-
-  <script src="assets/js/api.js" defer></script>
 </body>
 </html>
