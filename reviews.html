@@ -11,7 +11,7 @@
     <header class="top">
       <div>
         <div class="brand">AutomateIT — Customer Reviews</div>
-        <div class="small">Reviews are loaded securely from your Render backend (no API keys in the browser).</div>
+        <div class="small">Loaded securely from your backend (no API key in the browser)</div>
       </div>
       <div class="rating-line">
         <span id="avg" class="chip">Average: —</span>
@@ -19,13 +19,7 @@
       </div>
     </header>
 
-    <div class="controls">
-      <input id="placeIdInput" type="text" placeholder="Place ID (paste or prefill)" />
-      <button id="load">Load</button>
-      <button id="sort-newest">Newest</button>
-      <button id="sort-highest">Highest Rated</button>
-      <button id="sort-lowest">Lowest Rated</button>
-    </div>
+    <div class="controls" aria-hidden="true"></div>
 
     <div id="cards" class="cards" role="region" aria-live="polite"></div>
 

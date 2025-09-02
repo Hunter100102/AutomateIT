@@ -1,10 +1,9 @@
 // assets/js/api.js
-// Configure your backend URL and optional token.
-// IMPORTANT: No Google API keys in the browser.
+// Configure ONLY your backend URL. API key lives in Render, not here.
 window.REVIEWS_CONFIG = {
-  BACKEND_URL: "https://automateit.onrender.com", // <-- set this
-  PROXY_TOKEN: "",  // optional: must match Render PROXY_TOKEN if set
-  DEFAULT_PLACE_ID: "" // optional: set your Place ID for auto-load
+  BACKEND_URL: "https://automateit.onrender.com", // <-- change if different
+  PROXY_TOKEN: "",                                 // leave blank if not set on backend
+  DEFAULT_PLACE_ID: "5177255978048155758"          // locked to your business
 };
 
 async function fetchReviews(placeId){
