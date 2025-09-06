@@ -3,7 +3,7 @@
 window.REVIEWS_CONFIG = {
   BACKEND_URL: "https://automateit.onrender.com", // <-- change if different
   PROXY_TOKEN: "",                                 // leave blank if not set on backend
-  DEFAULT_PLACE_ID: "5177255978048155758"          // locked to your business
+  DEFAULT_PLACE_ID: "0xa370c7c228f7e1d:0xeb6710ec5771fdbd"          // locked to your business
 };
 
 async function fetchReviews(placeId){
