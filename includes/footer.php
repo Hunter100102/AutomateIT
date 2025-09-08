@@ -1,1 +1,0 @@
-<footer class=site style='background:#111;color:#fff;text-align:center;padding:2rem 1rem'>© <?php echo date('Y'); ?> AutomateIT</footer><script defer src=/assets/js/reviews.js></script></body></html>

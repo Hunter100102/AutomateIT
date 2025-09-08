@@ -1,1 +1,0 @@
-<!doctype html><html><head><meta charset=utf-8><meta name=viewport content='width=device-width,initial-scale=1'><title>AutomateIT</title><link rel=stylesheet href=/assets/css/ux_refresh.css><link rel=stylesheet href=/assets/css/reviews.css></head><body><header class=site><div class=container><a class=logo href=/>AutomateIT</a></div></header>

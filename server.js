@@ -1,138 +1,67 @@
-// server.js
-const express = require('express');
-const bodyParser = require('body-parser');
-const multer = require('multer');
-const cors = require('cors');
-const { spawn } = require('child_process');
-const path = require('path');
-const fs = require('fs');
-require('dotenv').config();
-
-const app = express();
-const port = process.env.PORT || 3000;
-
-// ---- Middleware
-app.use(bodyParser.json());
-app.use(cors({
-  origin: [
-    'https://automatingsolutions.com',
-    'https://hunter100102.github.io',
-    'http://localhost:3000',
-    'http://localhost:5500'
-  ],
-  optionsSuccessStatus: 200
-}));
-
-// Static (optional if you serve assets)
-app.use(express.static(path.join(__dirname)));
-
-// Health check for Render
-app.get('/healthz', (_req, res) => res.status(200).send('ok'));
-
-// ---- Email route (SendGrid)
-app.post('/api/send-email', async (req, res) => {
+// ---- Google Reviews proxy (Places API v1)
+app.get('/api/reviews', async (req, res) => {
   try {
-    const sgMail = require('@sendgrid/mail');
-    if (!process.env.SENDGRID_API_KEY) {
-      return res.status(500).json({ message: 'Missing SENDGRID_API_KEY' });
-    }
-    sgMail.setApiKey(process.env.SENDGRID_API_KEY);
+    const placeId = (req.query.placeId || '').trim();
 
-    const { name, email, message } = req.body || {};
-    const msg = {
-      to: 'william@automateingsolutions.com', // keep if this is intentional
-      from: 'spc.cody.hunter@gmail.com',
-      subject: 'New Contact Form Submission',
-      text: `Name: ${name}\nEmail: ${email}\nMessage: ${message}`
+    if (!placeId) {
+      return res.status(400).json({ error: "Missing 'placeId' query param" });
+    }
+    // Guard: users often paste a CID (0x...:0x...) instead of Place ID (ChIJ...)
+    if (/^0x/i.test(placeId)) {
+      return res.status(400).json({
+        error: "You passed a CID (0x…). Convert it to a Place ID (starts with 'ChIJ…') and try again."
+      });
+    }
+
+    if (!process.env.GOOGLE_MAPS_API_KEY) {
+      return res.status(500).json({ error: 'Missing GOOGLE_MAPS_API_KEY env var' });
+    }
+
+    const fields = [
+      'id',
+      'displayName',
+      'rating',
+      'userRatingCount',
+      'googleMapsUri',
+      'reviews'
+    ].join(',');
+
+    const url = `https://places.googleapis.com/v1/places/${encodeURIComponent(placeId)}?fields=${encodeURIComponent(fields)}`;
+
+    const resp = await fetch(url, {
+      headers: {
+        'X-Goog-Api-Key': process.env.GOOGLE_MAPS_API_KEY,
+        'X-Goog-FieldMask': fields
+      }
+    });
+
+    // Bubble up Google error messages if any
+    if (!resp.ok) {
+      const text = await resp.text();
+      return res.status(resp.status).send(text);
+    }
+
+    const data = await resp.json();
+
+    // Normalize shape for your frontend
+    const payload = {
+      id: data.id,
+      name: data.displayName?.text || data.displayName || '',
+      rating: data.rating ?? null,
+      userRatingCount: data.userRatingCount ?? 0,
+      googleMapsUri: data.googleMapsUri || '',
+      reviews: (data.reviews || []).map(r => ({
+        author: r.authorAttribution?.displayName || 'Anonymous',
+        profileUrl: r.authorAttribution?.uri || '',
+        text: r.text?.text || r.text || '',
+        starRating: r.rating ?? null,
+        publishTime: r.publishTime || null
+      }))
     };
 
-    await sgMail.send(msg);
-    res.status(200).json({ message: 'Email sent successfully' });
-  } catch (error) {
-    console.error('SendGrid error:', error?.response?.body || error);
-    res.status(500).json({ message: 'Failed to send email' });
+    res.json(payload);
+  } catch (err) {
+    console.error('Reviews endpoint error:', err);
+    res.status(500).json({ error: 'Server error', details: String(err) });
   }
-});
-
-// ---- Smart Analyzer route (xlsx/csv -> Python)
-
-// Disk storage that keeps/infers an extension; use /tmp for Render
-const storage = multer.diskStorage({
-  destination: (req, file, cb) => cb(null, '/tmp'),
-  filename: (req, file, cb) => {
-    const origExt =
-      path.extname(file.originalname) ||
-      (file.mimetype === 'text/csv' ? '.csv' :
-       file.mimetype === 'application/vnd.ms-excel' ? '.csv' :
-       file.mimetype === 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' ? '.xlsx' :
-       '');
-    const base =
-      path.basename(file.originalname, path.extname(file.originalname))
-        .replace(/[^a-zA-Z0-9._-]/g, '_') || 'upload';
-    cb(null, `${Date.now()}_${base}${origExt}`);
-  }
-});
-const upload = multer({
-  storage,
-  limits: { fileSize: 25 * 1024 * 1024 } // 25MB
-});
-
-app.post('/api/analyze-data', upload.single('datafile'), (req, res) => {
-  if (!req?.file?.path) {
-    return res.status(400).json({ message: "No file uploaded under field 'datafile'." });
-  }
-
-  const filePath = req.file.path;
-  const pyBin = process.env.PYTHON_BIN || 'python3';
-  const scriptPath = path.join(__dirname, 'analyze.py');
-
-  const py = spawn(pyBin, ['-u', scriptPath, filePath], {
-    env: { ...process.env, MPLBACKEND: 'Agg' }, // headless matplotlib
-    stdio: ['ignore', 'pipe', 'pipe']
-  });
-
-  let stdout = '';
-  let stderr = '';
-
-  py.stdout.on('data', (d) => { stdout += d.toString(); });
-  py.stderr.on('data', (e) => { stderr += e.toString(); });
-
-  const killTimer = setTimeout(() => {
-    try { py.kill('SIGKILL'); } catch {}
-  }, 30000); // 30s timeout
-
-  py.on('close', (code) => {
-    clearTimeout(killTimer);
-    // Always clean up temp file
-    try { fs.unlinkSync(filePath); } catch {}
-
-    if (code !== 0) {
-      console.error('Python exited with code', code, stderr || '(no stderr)');
-      return res.status(400).json({ message: 'Python error', details: (stderr || '').slice(0, 2000) });
-    }
-
-    if (!stdout.includes('---chart---') || !stdout.includes('---table---')) {
-      console.error('Malformed Python output:', stdout);
-      return res.status(500).json({ message: 'Malformed analysis output' });
-    }
-
-    const [insightsPart, chartTablePart] = stdout.split('---chart---');
-    const [chartPart, tablePart] = chartTablePart.split('---table---');
-
-    return res.json({
-      insights: (insightsPart || '').trim(),
-      chart: (chartPart || '').trim(),
-      table: (tablePart || '').trim()
-    });
-  });
-});
-
-// ---- Fallback route (optional)
-app.get('/', (_req, res) => {
-  res.sendFile(path.join(__dirname, 'index.html'));
-});
-
-// ---- Start server
-app.listen(port, () => {
-  console.log(`Server is running on port ${port}`);
 });

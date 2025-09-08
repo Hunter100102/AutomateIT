@@ -1,1 +1,0 @@
-<?php $mysqli=new mysqli('localhost','root','','website_db'); if($mysqli->connect_errno){http_response_code(500);die('DB error');} $mysqli->set_charset('utf8mb4'); ?>
