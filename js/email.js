@@ -1,2 +1,2 @@
-function initEmail(){if(!window.emailjs)return;emailjs.init({publicKey:'YOUR_PUBLIC_KEY'})}
+function initEmail(){if(!window.emailjs)return;emailjs.init({publicKey:'K9Tyz06jayTkULA1b'})}
 async function sendContactForm(e){e.preventDefault();const f=e.target,d={from_name:f.name.value,from_email:f.email.value,phone:f.phone.value,message:f.message.value};try{await emailjs.send('YOUR_SERVICE_ID','YOUR_TEMPLATE_ID',d);alert('Thanks! Your message was sent.');f.reset()}catch(err){console.error(err);alert('Sorry, something went wrong. Email us at '+(f.dataset.mailto||'hello@example.com'))}}document.addEventListener('DOMContentLoaded',()=>{initEmail();const c=document.querySelector('#contact-form');if(c)c.addEventListener('submit',sendContactForm)});
