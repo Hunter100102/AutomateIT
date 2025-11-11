@@ -5,7 +5,7 @@
   // ---- CONFIG: replace with your real IDs ----
   var PUBLIC_KEY  = 'K9Tyz06jayTkULA1b';
   var SERVICE_ID  = 'service_9klxd6u';
-  var TEMPLATE_ID = 'template_6pjaq5k';
+  var TEMPLATE_ID = 'template_6b9hm7p';
   // -------------------------------------------
 
   function initEmail() {
