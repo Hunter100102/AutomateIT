@@ -1,0 +1,44 @@
+# AutomateIT SEO + security hardening
+# Preferred host: https://automatingsolutions.com (non-www)
+
+RewriteEngine On
+
+# 1) Force HTTPS
+RewriteCond %{HTTPS} !=on
+RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
+
+# 2) Force non-www
+RewriteCond %{HTTP_HOST} ^www\.automatingsolutions\.com$ [NC]
+RewriteRule ^ https://automatingsolutions.com%{REQUEST_URI} [L,R=301]
+
+# 3) Redirect /index.html -> /
+RewriteRule ^index\.html$ / [L,R=301]
+
+# 4) Redirect extensionless URLs to .html when the .html file exists
+#    e.g., /contact -> /contact.html
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{DOCUMENT_ROOT}/$1.html -f
+RewriteRule ^(.+?)/?$ $1.html [L,R=301]
+
+# 5) Block access to common sensitive/dev files (if they ever get uploaded)
+RewriteRule (^|/)\.git - [F,L]
+RewriteRule \.(?:log|sql|bak|ini|env|md)$ - [F,L]
+
+# 6) Cache static assets (optional but recommended)
+<IfModule mod_expires.c>
+  ExpiresActive On
+  ExpiresByType text/css "access plus 7 days"
+  ExpiresByType application/javascript "access plus 7 days"
+  ExpiresByType image/jpeg "access plus 30 days"
+  ExpiresByType image/png "access plus 30 days"
+  ExpiresByType image/webp "access plus 30 days"
+  ExpiresByType image/svg+xml "access plus 30 days"
+  ExpiresByType image/x-icon "access plus 30 days"
+</IfModule>
+
+<IfModule mod_headers.c>
+  Header set X-Content-Type-Options "nosniff"
+  Header set X-Frame-Options "SAMEORIGIN"
+  Header set Referrer-Policy "strict-origin-when-cross-origin"
+</IfModule>
