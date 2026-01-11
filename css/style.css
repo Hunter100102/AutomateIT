@@ -18,3 +18,29 @@ label{display:block;margin:10px 0 6px;color:#cbd5e1}button{cursor:pointer}.btn{d
 .kpis{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}.kpis .card h3{margin:0 0 6px}
 .mobile-menu{display:none}@media(max-width:900px){.hero{grid-template-columns:1fr}.grid{grid-template-columns:1fr}.footer-inner{grid-template-columns:1fr}.menu{display:none}.mobile-menu{display:block}}
 table{font-size:15px}
+
+
+/* --- Enhancements (IT Support expansion + mobile UX) --- */
+a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,select:focus-visible{outline:2px solid var(--brand);outline-offset:2px}
+.page-hero{display:grid;grid-template-columns:1.1fr .9fr;gap:24px;padding:52px 0}
+.highlight{background:linear-gradient(135deg, rgba(34,211,238,.10), rgba(52,211,153,.06));border:1px solid rgba(34,211,238,.22)}
+.grid.two{grid-template-columns:repeat(2,1fr)}
+/* mobile nav drawer */
+@media(max-width:900px){
+  header{backdrop-filter:blur(10px)}
+  .nav{position:relative}
+  .menu.open{
+    display:flex;
+    position:absolute;
+    top:64px; left:0; right:0;
+    flex-direction:column;
+    gap:6px;
+    padding:12px;
+    background:rgba(11,17,32,.98);
+    border-bottom:1px solid #12203a;
+  }
+  .menu.open a{padding:12px;border-radius:12px}
+  .menu.open .cta{width:100%;text-align:center}
+  .page-hero{grid-template-columns:1fr;padding:28px 0}
+  .grid.two{grid-template-columns:1fr}
+}
