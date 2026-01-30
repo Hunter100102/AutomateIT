@@ -44,3 +44,10 @@ a:focus-visible,button:focus-visible,input:focus-visible,textarea:focus-visible,
   .page-hero{grid-template-columns:1fr;padding:28px 0}
   .grid.two{grid-template-columns:1fr}
 }
+
+
+/* --- Veteran-Owned mark --- */
+.vet-pill{margin-left:10px;padding:6px 10px;border-radius:999px;border:1px solid rgba(251,191,36,.45);color:var(--warn);font-size:12px;font-weight:700;letter-spacing:.4px;white-space:nowrap}
+.vet-line{display:inline-block;margin-top:6px;color:var(--warn);font-weight:700}
+.vet-badge{border-color:rgba(251,191,36,.45);color:var(--warn)}
+@media(max-width:420px){.vet-pill{display:none}}
