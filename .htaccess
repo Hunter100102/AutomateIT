@@ -1,31 +1,34 @@
-# KnC Automations SEO + security hardening
-# Preferred host: https://automatingsolutions.com (non-www)
-
+# Preferred URL structure: https://automatingsolutions.com/clean-path
 RewriteEngine On
 
-# 1) Force HTTPS
+# Force HTTPS
 RewriteCond %{HTTPS} !=on
 RewriteRule ^ https://%{HTTP_HOST}%{REQUEST_URI} [L,R=301]
 
-# 2) Force non-www
+# Force non-www
 RewriteCond %{HTTP_HOST} ^www\.automatingsolutions\.com$ [NC]
 RewriteRule ^ https://automatingsolutions.com%{REQUEST_URI} [L,R=301]
 
-# 3) Redirect /index.html -> /
+# Redirect explicit index.html to /
+RewriteCond %{THE_REQUEST} \s/+index\.html[\s?] [NC]
 RewriteRule ^index\.html$ / [L,R=301]
 
-# 4) Redirect extensionless URLs to .html when the .html file exists
-#    e.g., /contact -> /contact.html
+# Redirect any requested .html URL to the clean version
+RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+RewriteRule ^(.+)\.html$ /$1 [L,R=301]
+
+# Internally rewrite clean URLs to existing .html files
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{DOCUMENT_ROOT}/$1.html -f
-RewriteRule ^(.+?)/?$ $1.html [L,R=301]
+RewriteRule ^(.+?)/?$ $1.html [L]
 
-# 5) Block access to common sensitive/dev files (if they ever get uploaded)
+# Protect common sensitive files
 RewriteRule (^|/)\.git - [F,L]
 RewriteRule \.(?:log|sql|bak|ini|env|md)$ - [F,L]
 
-# 6) Cache static assets (optional but recommended)
+ErrorDocument 404 /404.html
+
 <IfModule mod_expires.c>
   ExpiresActive On
   ExpiresByType text/css "access plus 7 days"
