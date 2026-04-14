@@ -1,6 +1,6 @@
-# AutomateIT Website (Static, GitHub Pages Ready)
+# KnC Automations Website (Static, GitHub Pages Ready)
 
-Production-ready static site for **AutomateIT** (Quickbase & CRM Automation). Updated pricing tiers included.
+Production-ready static site for **KnC Automations** (Quickbase & CRM Automation). Updated pricing tiers included.
 
 ## Deploy (Free)
 - GitHub Pages: push to repo -> Settings -> Pages -> deploy from root
@@ -17,4 +17,4 @@ Production-ready static site for **AutomateIT** (Quickbase & CRM Automation). Up
 - OG tags + robots.txt + sitemap.xml
 - JSON-LD Organization schema
 
-© 2025 AutomateIT LLC
+© 2025 KnC Automations LLC

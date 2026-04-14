@@ -43,7 +43,7 @@
       from_email: from_email,
       phone:      phone,
       message:    message,
-      site_name:  'AutomateIT',
+      site_name:  'KnC Automations',
       page_url:   (typeof location !== 'undefined' ? location.href : ''),
       submitted_at: new Date().toISOString()
     };
