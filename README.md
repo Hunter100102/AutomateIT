@@ -18,3 +18,7 @@ Production-ready static site for **KnC Automations** (Quickbase & CRM Automation
 - JSON-LD Organization schema
 
 © 2025 KnC Automations LLC
+
+
+## Local preview note
+If previewing with VS Code Live Server, use the `.html` links included in this package. Pretty URLs such as `/services` require the included `.htaccess` file on Apache/Hostinger or a server-side rewrite rule.

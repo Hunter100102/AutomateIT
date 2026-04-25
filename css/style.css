@@ -92,3 +92,83 @@ summary{cursor:pointer;font-weight:700}
   .vet-pill{display:none}
   .card{padding:20px}
 }
+
+/* ---------------------------------------------------------
+   Background image enhancement pass
+   - Keeps the current layout, colors, spacing, and content intact.
+   - Adds subtle photo texture from /assets without reducing readability.
+--------------------------------------------------------- */
+body{
+  background:
+    linear-gradient(rgba(247,248,250,.80), rgba(247,248,250,.94)),
+    url('../assets/homepage-background-4.jpg') center top / cover fixed no-repeat,
+    var(--bg);
+}
+main > .container > .hero,
+main > .container > .page-hero,
+main > .container > .section{
+  position:relative;
+  isolation:isolate;
+}
+main > .container > .hero::before,
+main > .container > .page-hero::before,
+main > .container > .section::before{
+  content:"";
+  position:absolute;
+  inset:0;
+  z-index:-1;
+  border-radius:28px;
+  pointer-events:none;
+  background-position:center;
+  background-size:cover;
+  background-repeat:no-repeat;
+  opacity:.14;
+}
+main > .container > .hero::before{
+  background-image:
+    linear-gradient(90deg, rgba(247,248,250,.75) 0%, rgba(247,248,250,.78) 48%, rgba(247,248,250,.5) 100%),
+    url('../assets/homepage-background-3.jpg');
+  opacity:1;
+}
+main > .container > .page-hero::before{
+  background-image:
+    linear-gradient(90deg, rgba(247,248,250,.98), rgba(247,248,250,.74)),
+    url('../assets/learn-more-background.jpg');
+  opacity:1;
+}
+main > .container > .section:nth-of-type(2)::before{
+  background-image:
+    linear-gradient(rgba(255,255,255,.88), rgba(255,255,255,.88)),
+    url('../assets/process-automation.jpg');
+}
+main > .container > .section:nth-of-type(3)::before{
+  background-image:
+    linear-gradient(rgba(255,255,255,.86), rgba(255,255,255,.86)),
+    url('../assets/homepage background.jpg');
+}
+main > .container > .section:nth-of-type(4)::before{
+  background-image:
+    linear-gradient(rgba(255,255,255,.9), rgba(255,255,255,.9)),
+    url('../assets/about-us-background.jpg');
+}
+.card,
+.faq details,
+.table-wrap{
+  background-color:rgba(255,255,255,.94);
+}
+.card.soft{
+  background:
+    linear-gradient(rgba(241,246,251,.95), rgba(241,246,251,.95)),
+    url('../assets/homepage background-2.jpg') center / cover no-repeat;
+}
+.card.highlight{
+  background:
+    linear-gradient(135deg, rgba(246,251,255,.93), rgba(237,247,241,.93)),
+    url('../assets/learn-more-background.jpg') center / cover no-repeat;
+}
+@media (max-width:920px){
+  body{background-attachment:scroll;}
+  main > .container > .hero::before,
+  main > .container > .page-hero::before,
+  main > .container > .section::before{border-radius:22px;}
+}
